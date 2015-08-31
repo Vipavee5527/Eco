@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="my_image_array">
+
+        <item>@mipmap/wongpanit</item>
+        <item>@mipmap/coffeepark</item>
+        <item>@mipmap/bangmodland</item>
+        <item>@mipmap/sofa</item>
+
+
+
+    </string-array>
+
+    <string-array name="my_string_array">
+
+        <item>Wongpanit Shop \n Recycle Shop</item>
+        <item>Koffee Park \n Food Scrape Resource</item>
+        <item>Bangmod Land \n Landfill</item>
+        <item>Sofa for you \n Freecycle Stuffs</item>
+
+    </string-array>
+</resources>
