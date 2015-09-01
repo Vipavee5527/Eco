@@ -1,7 +1,7 @@
 package com.example.gigie.eco;
 
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,39 +13,35 @@ import android.widget.TextView;
 /**
  * Created by gigie on 8/31/15 AD.
  */
-public class CustomListviewAdapter extends ArrayAdapter<String> {
-    String[] STR;
-    int[] RESOURCE_ID;
-    LayoutInflater INFLATER;
+public class CustomListViewAdapter extends ArrayAdapter<String> {
 
-    public CustomListviewAdapter(Context context, int textViewResourceId
-            , String[] objects, int[] resourceId) {
-        super(context, textViewResourceId, objects);
-        STR = objects;
-        RESOURCE_ID = resourceId;
-        INFLATER = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    private final Activity context;
+    private final String[] txtLine1;
+    private final String[] txtLine2;
+    private final Integer[] imageId;
+
+    public CustomListViewAdapter(Activity context, String[] txtLine1, String[] txtLine2, Integer[] imageId) {
+        super(context, R.layout.listview, txtLine1);
+        this.context = context;
+        this.txtLine1 = txtLine1;
+        this.txtLine2 = txtLine2;
+        this.imageId = imageId;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView = null;
-        if(convertView == null) {
-            convertView = INFLATER.inflate(R.layout.listview, parent, false);
-            imageView = (ImageView)convertView.findViewById(R.id.imageView1);
-        } else {
-            imageView = (ImageView)convertView.findViewById(R.id.imageView1);
-            DecodeTask dt1 = (DecodeTask)imageView.getTag(R.id.imageView1);
-            if(dt1 != null)
-                dt1.cancel(true);
-        }
+    @Override
+    public View getView(int position, View view, ViewGroup parent) {
+        LayoutInflater inflater = context.getLayoutInflater();
+        View rowView = inflater.inflate(R.layout.listview, null, true);
 
-        imageView.setImageBitmap(null);
-        DecodeTask dt2 = new DecodeTask(getContext(), imageView, RESOURCE_ID[position]);
-        dt2.execute();
-        imageView.setTag(R.id.imageView1, dt2);
+        TextView txt1 = (TextView) rowView.findViewById(R.id.txt);
+        TextView txt2 = (TextView) rowView.findViewById(R.id.txt2);
 
-        TextView textView = (TextView)convertView.findViewById(R.id.textView1);
-        textView.setText(STR[position]);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.img);
+        txt1.setText(txtLine1[position]);
+        txt2.setText(txtLine2[position]);
 
-        return convertView;
+        imageView.setImageResource(imageId[position]);
+        return rowView;
     }
+
 }
