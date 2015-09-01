@@ -54,11 +54,14 @@ public class MainActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddFragment addFragment = new AddFragment();
+                //AddFragment addFragment = new AddFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, addFragment);
+                //transaction.replace(R.id.fragment_container, addFragment);
                 //transaction.addToBackStack(null);
-                transaction.commit();
+                //transaction.commit();
+
+                SelectTypeDialog dialog = new SelectTypeDialog();
+                dialog.show(transaction, "AAAAA");
 
             }
         });
