@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="my_image_array">
+
+        <item>@mipmap/paper</item>
+        <item>@mipmap/plastic</item>
+        <item>@mipmap/metal</item>
+        <item>@mipmap/glass</item>
+        <item>@mipmap/otherrecycle</item>
+
+
+    </string-array>
+
+    <string-array name="my_string_array">
+
+        <item>Paper</item>
+        <item>Plastic</item>
+        <item>Metal</item>
+        <item>Glass</item>
+        <item>Other</item>
+    </string-array>
+
+    <color name="blue">#32E0FF</color>
+    <color name="yellow">#FFE432</color>
+
+</resources>
