@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 /**
@@ -33,9 +33,9 @@ public class ProfileFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_profile, null, false);
 
-        Button shop = (Button) v.findViewById(R.id.shop);
-        Button favorite = (Button) v.findViewById(R.id.favorite);
-        Button request = (Button) v.findViewById(R.id.request);
+        ImageButton shop = (ImageButton) v.findViewById(R.id.shop);
+        ImageButton favorite = (ImageButton) v.findViewById(R.id.favorite);
+        ImageButton request = (ImageButton) v.findViewById(R.id.request);
         final ListView listView = (ListView) v.findViewById(R.id.list_profile);
 
         shop.setOnClickListener(new View.OnClickListener() {
@@ -52,11 +52,14 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
 
             }
+
         });
 
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
 
             }
         });
