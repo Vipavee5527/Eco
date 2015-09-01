@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, homeFragment);
-        transaction.addToBackStack(null);
+        //transaction.addToBackStack(null);
         transaction.commit();
 
         btn_home.setOnClickListener(new View.OnClickListener() {
@@ -54,11 +54,14 @@ public class MainActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddFragment addFragment = new AddFragment();
+                //AddFragment addFragment = new AddFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.fragment_container, addFragment);
+                //transaction.replace(R.id.fragment_container, addFragment);
                 //transaction.addToBackStack(null);
-                transaction.commit();
+                //transaction.commit();
+
+                SelectTypeDialog dialog = new SelectTypeDialog();
+                dialog.show(transaction, "AAAAA");
 
             }
         });
