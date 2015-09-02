@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<<<<<<< HEAD
     <string-array name="my_image_array">
+=======
+    <string-array name="my_image_array2">
+>>>>>>> pr/2
 
         <item>@mipmap/coffee</item>
         <item>@mipmap/food</item>
@@ -12,7 +16,11 @@
 
     </string-array>
 
+<<<<<<< HEAD
     <string-array name="my_string_array">
+=======
+    <string-array name="my_string_array2">
+>>>>>>> pr/2
 
         <item>Coffee Ground</item>
         <item>Food Scrap</item>

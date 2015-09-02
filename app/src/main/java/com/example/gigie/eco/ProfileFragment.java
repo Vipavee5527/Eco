@@ -50,7 +50,8 @@ public class ProfileFragment extends Fragment {
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), text2, text, image);
+                listView.setAdapter(adapter);
             }
 
         });
@@ -58,9 +59,8 @@ public class ProfileFragment extends Fragment {
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
+                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), text2, text2, image);
+                listView.setAdapter(adapter);
             }
         });
 

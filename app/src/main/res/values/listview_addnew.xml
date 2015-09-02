@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<<<<<<< HEAD
     <string-array name="my_image_array">
+=======
+    <string-array name="my_image_array4">
+>>>>>>> pr/2
 
         <item>@mipmap/iconrecycle</item>
         <item>@mipmap/iconfood</item>
@@ -12,7 +16,11 @@
 
     </string-array>
 
+<<<<<<< HEAD
     <string-array name="my_string_array">
+=======
+    <string-array name="my_string_array4">
+>>>>>>> pr/2
 
         <item>Recycled Waste</item>
         <item>Food Scrap</item>
