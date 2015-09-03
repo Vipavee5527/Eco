@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 //transaction.replace(R.id.fragment_container, addFragment);
                 //transaction.addToBackStack(null);
                 //transaction.commit();
-                Dialog dialog = new Dialog(v.getContext());
+                final Dialog dialog = new Dialog(v.getContext());
                 dialog.setContentView(R.layout.addnew);
                 dialog.setTitle("Select");
 
@@ -84,6 +84,13 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Toast.makeText(getApplicationContext(), "Recycled Waste",
                                 Toast.LENGTH_LONG).show();
+
+                        RecycleShopFragment recycleShopFragment = new RecycleShopFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, recycleShopFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
                     }
                 });
 
@@ -92,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Toast.makeText(getApplicationContext(),"Food Scrape",
                                 Toast.LENGTH_LONG).show();
+                        FoodScrapFragment foodScrapFragment = new FoodScrapFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, foodScrapFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
                     }
                 });
 
@@ -100,6 +113,13 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Toast.makeText(getApplicationContext(),"Landfill",
                                 Toast.LENGTH_LONG).show();
+
+                        LandFillFragment landFillFragment = new LandFillFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, landFillFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
                     }
                 });
 
@@ -108,6 +128,13 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Toast.makeText(getApplicationContext(),"Freecycle Stuffs",
                                 Toast.LENGTH_LONG).show();
+
+                        FreeCycleFragment freeCycleFragment = new FreeCycleFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, freeCycleFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
                     }
                 });
 
