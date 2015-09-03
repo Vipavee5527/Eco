@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="freecycle_image_array">
+
+        <item>@mipmap/chair</item>
+        <item>@mipmap/table</item>
+        <item>@mipmap/bed</item>
+        <item>@mipmap/book</item>
+        <item>@mipmap/cloth</item>
+        <item>@mipmap/freeother</item>
+
+
+
+
+    </string-array>
+
+    <string-array name="freecycle_string_array">
+
+        <item>Chair</item>
+        <item>Table</item>
+        <item>Bed</item>
+        <item>Book</item>
+        <item>Cloth</item>
+        <item>Other</item>
+
+    </string-array>
+</resources>
