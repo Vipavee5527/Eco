@@ -1,6 +1,5 @@
 package com.example.gigie.eco;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
@@ -9,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //AddFragment addFragment = new AddFragment();
+
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 //transaction.replace(R.id.fragment_container, addFragment);
                 //transaction.addToBackStack(null);
