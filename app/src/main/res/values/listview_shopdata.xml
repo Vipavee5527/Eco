@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="my_image_array3">
+    <string-array name="shop_image_array3">
 
         <item>@mipmap/wongpanit</item>
         <item>@mipmap/coffeepark</item>
@@ -12,7 +12,7 @@
 
     </string-array>
 
-    <string-array name="my_string_array3">
+    <string-array name="shop_string_array3">
 
         <item>Wongpanit Shop \n Recycle Shop</item>
         <item>Koffee Park \n Food Scrape Resource</item>
