@@ -1,5 +1,7 @@
 package com.example.gigie.eco;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +9,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    String[] text = {"Dummy 1", "Dummy2", "Dummy 3", "Dummy 4", "Dummy 5", "Dummy 6"};
+
+    String[] text2 = {"Dummy 1-2", "Dummy2-2", "Dummy 3-2", "Dummy 4-2", "Dummy 5-2", "Dummy 6-2"};
+
+    Integer[] image = {
+            R.drawable.cast_ic_notification_2,
+            R.drawable.common_full_open_on_phone,
+            R.drawable.cast_ic_notification_0,
+            R.drawable.cast_ic_notification_1,
+            R.drawable.common_signin_btn_text_dark,
+            R.drawable.ic_cast_on_2_light
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, homeFragment);
-        transaction.addToBackStack(null);
+        //transaction.addToBackStack(null);
         transaction.commit();
 
         btn_home.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +75,72 @@ public class MainActivity extends AppCompatActivity {
                 //transaction.replace(R.id.fragment_container, addFragment);
                 //transaction.addToBackStack(null);
                 //transaction.commit();
+                final Dialog dialog = new Dialog(v.getContext());
+                dialog.setContentView(R.layout.addnew);
+                dialog.setTitle("Select");
 
-                SelectTypeDialog dialog = new SelectTypeDialog();
-                dialog.show(transaction, "AAAAA");
+                dialog.findViewById(R.id.btn_add_menu1).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(), "Recycled Waste",
+                                Toast.LENGTH_LONG).show();
 
+                        RecycleShopFragment recycleShopFragment = new RecycleShopFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, recycleShopFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.findViewById(R.id.btn_add_menu2).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"Food Scrape",
+                                Toast.LENGTH_LONG).show();
+                        FoodScrapFragment foodScrapFragment = new FoodScrapFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, foodScrapFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.findViewById(R.id.btn_add_menu3).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"Landfill",
+                                Toast.LENGTH_LONG).show();
+
+                        LandFillFragment landFillFragment = new LandFillFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, landFillFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.findViewById(R.id.btn_add_menu4).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"Freecycle Stuffs",
+                                Toast.LENGTH_LONG).show();
+
+                        FreeCycleFragment freeCycleFragment = new FreeCycleFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, freeCycleFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
+                    }
+                });
+
+
+
+                dialog.show();
             }
         });
 

@@ -38,6 +38,9 @@ public class ProfileFragment extends Fragment {
         ImageButton request = (ImageButton) v.findViewById(R.id.request);
         final ListView listView = (ListView) v.findViewById(R.id.list_profile);
 
+        CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), text, text2, image);
+        listView.setAdapter(adapter);
+
         shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +53,8 @@ public class ProfileFragment extends Fragment {
         favorite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), text2, text, image);
+                listView.setAdapter(adapter);
             }
 
         });
@@ -58,9 +62,8 @@ public class ProfileFragment extends Fragment {
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-
+                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), text2, text2, image);
+                listView.setAdapter(adapter);
             }
         });
 
