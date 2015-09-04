@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="catreq">
+        <item>Select Category</item>
+        <item>Recycle Waste</item>
+        <item>Food Scraps</item>
+        <item>Landfill</item>
+        <item>Freecycle Stuffs</item>
+    </string-array>
+</resources>

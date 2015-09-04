@@ -75,5 +75,21 @@
                 android:padding="4dp"/>
         </TableRow>
 
+        <TableRow>
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_pause_light" />
+
+            <Button
+                android:id="@+id/btn_add_menu5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:text="Add Request"
+                android:padding="4dp"/>
+        </TableRow>
+
     </TableLayout>
 </RelativeLayout>

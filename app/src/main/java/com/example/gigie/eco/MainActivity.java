@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.parse.Parse;
+import com.parse.ParseObject;
+
 public class MainActivity extends AppCompatActivity {
 
     String[] text = {"Dummy 1", "Dummy2", "Dummy 3", "Dummy 4", "Dummy 5", "Dummy 6"};
@@ -29,6 +32,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this, "3JVUVxK7YwlophTfcpYOCZcxuh4VG9zmTl1wi2r2", "sFBwfAWFhvYgoMPaM5sYCzGlLQAB1Jbh8SfEu0HY");
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
+
+
+
         ImageButton btn_home = (ImageButton)findViewById(R.id.btn_home);
         ImageButton btn_feed = (ImageButton)findViewById(R.id.btn_feed);
         ImageButton btn_add = (ImageButton)findViewById(R.id.btn_add);
@@ -130,6 +144,21 @@ public class MainActivity extends AppCompatActivity {
                         FreeCycleFragment freeCycleFragment = new FreeCycleFragment();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, freeCycleFragment);
+                        //transaction.addToBackStack(null);
+                        transaction.commit();
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.findViewById(R.id.btn_add_menu5).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(getApplicationContext(),"Add Request",
+                                Toast.LENGTH_LONG).show();
+
+                        AddRequestFragment addRequestFragment = new AddRequestFragment();
+                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.fragment_container, addRequestFragment);
                         //transaction.addToBackStack(null);
                         transaction.commit();
                         dialog.dismiss();
