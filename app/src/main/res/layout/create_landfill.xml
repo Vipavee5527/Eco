@@ -111,7 +111,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/recycle_description"
+                android:id="@+id/landfill_description"
                 android:layout_width="300dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
@@ -297,6 +297,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="Please specify"
+                android:id="@+id/other_specify"
                 android:layout_marginLeft="3dp"/>
         </LinearLayout>
 
@@ -308,7 +309,7 @@
             android:layout_marginTop="2dp">
 
             <Button
-                android:id="@+id/pick_location"
+                android:id="@+id/btn_pick_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"

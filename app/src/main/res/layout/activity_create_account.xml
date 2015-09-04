@@ -46,7 +46,7 @@
                         <EditText
                             android:layout_width="186dp"
                             android:layout_height="match_parent"
-                            android:id="@+id/editText3"
+                            android:id="@+id/username"
                             android:hint="Create Username"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -67,7 +67,7 @@
                             android:layout_height="match_parent"
                             android:inputType="textPassword"
                             android:ems="10"
-                            android:id="@+id/editText4"
+                            android:id="@+id/password"
                             android:hint="Create Password"
                             android:textSize="16dp" />
                     </LinearLayout>
@@ -111,7 +111,7 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText5"
+                    android:id="@+id/displayname"
                     android:hint="Display Name"
                     android:layout_marginRight="50dp" />
             </LinearLayout>
@@ -131,7 +131,7 @@
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText6"
+                    android:id="@+id/mail"
                     android:hint="E-mail"
                     android:layout_marginRight="50dp" />
             </LinearLayout>
@@ -140,7 +140,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
-                android:id="@+id/button"
+                android:id="@+id/btn_signup"
                 android:layout_gravity="center_horizontal"
                 android:background="#39c202" />
         </LinearLayout>
