@@ -10,7 +10,7 @@ import android.widget.Toast;
  * Created by gigie on 9/1/15 AD.
  */
 public class SelectTypeDialog extends android.support.v4.app.DialogFragment {
-    String[] text = {"Recycled Waste", "Food Scrape", "Landfill", "Freecycle Stuffs", "New Request"};
+    String[] text = {"Recycled Waste", "Food Scrape", "Landfill", "Freecycle Stuffs", "New Request","Add Request"};
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
