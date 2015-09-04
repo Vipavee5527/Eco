@@ -1,0 +1,199 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".CatPaperActivity">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/linearLayout">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear bottle (PET)"
+            android:textSize="20dp"
+            android:id="@+id/pet"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/petprice"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="8dp"
+            android:inputType="number"
+            android:hint="0.00"
+            android:layout_marginLeft="15dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THB./kg."
+            android:textSize="20dp"
+            android:layout_marginTop="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignLeft="@+id/linearLayout"
+        android:layout_alignStart="@+id/linearLayout"
+        android:id="@+id/linearLayout2">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opaque bottle (PP)"
+            android:textSize="20dp"
+            android:id="@+id/pp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ppprice"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="8dp"
+            android:inputType="number"
+            android:hint="0.00"
+            android:layout_marginLeft="5dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THB./kg."
+            android:textSize="20dp"
+            android:layout_marginTop="15dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignStart="@+id/linearLayout2"
+        android:id="@+id/linearLayout3">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PVC pipe"
+            android:textSize="20dp"
+            android:id="@+id/pvc"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pvcprice"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="8dp"
+            android:inputType="number"
+            android:hint="0.00"
+            android:layout_marginLeft="95dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THB./kg."
+            android:textSize="20dp"
+            android:layout_marginTop="15dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_alignLeft="@+id/linearLayout3"
+        android:layout_alignStart="@+id/linearLayout3"
+        android:id="@+id/linearLayout4">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cables enclosures"
+            android:textSize="20dp"
+            android:id="@+id/cable"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cableprice"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="8dp"
+            android:inputType="number"
+            android:hint="0.00"
+            android:layout_marginLeft="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THB./kg."
+            android:textSize="20dp"
+            android:layout_marginTop="15dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout4"
+        android:layout_alignLeft="@+id/linearLayout4"
+        android:layout_alignStart="@+id/linearLayout4"
+        android:id="@+id/linearLayout5">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other"
+            android:textSize="20dp"
+            android:id="@+id/other_plasstic"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/other_plassticspec"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="8dp"
+            android:inputType="text"
+            android:hint="Please specify"
+            android:layout_marginLeft="0dp" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/other_plassticprice"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="8dp"
+            android:inputType="number"
+            android:hint="0.00"
+            android:layout_marginLeft="-10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="THB./kg."
+            android:textSize="20dp"
+            android:layout_marginTop="15dp" />
+
+    </LinearLayout>
+
+
+
+
+
+
+</RelativeLayout>

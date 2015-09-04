@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="noti_image_array">
+
+        <item>@mipmap/wongpanit</item>
+        <item>@mipmap/coffeepark</item>
+        <item>@mipmap/sofa</item>
+
+
+
+
+    </string-array>
+
+    <string-array name="noti_string_array">
+
+        <item>Wongpanit Shop \n Update metal price</item>
+        <item>Koffee Park \n Update coffee ground</item>
+        <item>sofa for you \n reply: I have sofa</item>
+
+
+    </string-array>
+</resources>
