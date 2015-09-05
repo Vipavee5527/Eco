@@ -58,6 +58,25 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
+/*
+        Collection<String> permissions = new ArrayList<String>();
+        permissions.add("user_status");
+        permissions.add("read_stream");
+
+        ParseFacebookUtils.logInWithReadPermissionsInBackground(this, permissions, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException err) {
+                if (user == null) {
+                    Log.d("MyApp", "Uh oh. The user cancelled the Facebook login.");
+                } else if (user.isNew()) {
+                    Log.d("MyApp", "User signed up and logged in through Facebook!");
+                } else {
+                    Log.d("MyApp", "User logged in through Facebook!");
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                }
+            }
+        });*/
     }
 
     @Override
@@ -82,5 +101,6 @@ public class LoginActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-}
 
+
+}

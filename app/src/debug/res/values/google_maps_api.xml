@@ -4,10 +4,10 @@
 
     To get one, follow this link, follow the directions and press "Create" at the end:
 
-https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=DA:3F:AF:CC:82:48:CD:C8:4F:45:FF:BF:EA:6E:14:43:42:96:DB:69%3Bcom.example.gigie.recyclelocator
+https://console.developers.google.com/flows/enableapi?apiid=maps_android_backend&keyType=CLIENT_SIDE_ANDROID&r=DA:3F:AF:CC:82:48:CD:C8:4F:45:FF:BF:EA:6E:14:43:42:96:DB:69%3Bcom.example.gigie.eco
 
     You can also add your credentials to an existing key, using this line:
-    DA:3F:AF:CC:82:48:CD:C8:4F:45:FF:BF:EA:6E:14:43:42:96:DB:69;com.example.gigie.recyclelocator
+    DA:3F:AF:CC:82:48:CD:C8:4F:45:FF:BF:EA:6E:14:43:42:96:DB:69;com.example.gigie.eco
 
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
