@@ -21,7 +21,7 @@
         android:gravity="center_horizontal|bottom"
         android:orientation="horizontal"
         android:weightSum="1"
-        android:background="#fefff694">
+        android:background="#393836">
 
         <ImageButton
             android:id="@+id/btn_home"
@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_home"
-            android:background="#fefff694"/>
+            android:background="#393836"/>
 
         <ImageButton
             android:id="@+id/btn_feed"
@@ -37,7 +37,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_feed"
-            android:background="#fefff694"/>
+            android:background="#393836"
+            />
 
         <ImageButton
             android:id="@+id/btn_add"
@@ -45,7 +46,10 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_add"
-            android:background="#fefff694"/>
+            android:background="#39C302"
+
+            android:scaleType="centerCrop"
+            android:padding="0dp"/>
 
         <ImageButton
             android:id="@+id/btn_search"
@@ -53,7 +57,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_search"
-            android:background="#fefff694"/>
+            android:background="#393836"/>
 
         <ImageButton
             android:id="@+id/btn_profile"
@@ -61,7 +65,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_profile"
-            android:background="#fefff694"/>
+            android:background="#393836"/>
     </LinearLayout>
 
 </RelativeLayout>

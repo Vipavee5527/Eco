@@ -9,42 +9,63 @@
         android:orientation="horizontal"
         android:gravity="top"
         android:weightSum="1"
-        >
+        android:background="#ffffff"
+        android:id="@+id/linearLayout7">
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_recycle"
             android:layout_weight="0.25"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:text="1"/>
+            android:src="@mipmap/recyclebtn"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="#0000"
+            android:padding="0dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_foodscrape"
             android:layout_weight="0.25"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:text="2"/>
+            android:src="@mipmap/foodscrapebtn"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="#0000"
+            android:padding="0dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_landfill"
             android:layout_weight="0.25"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:text="3"/>
+            android:src="@mipmap/landfillbtn"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="#0000"
+            android:padding="0dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_freecycle"
             android:layout_weight="0.25"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:text="4"/>
+            android:src="@mipmap/freecyclebtn"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="#0000"
+            android:padding="0dp"/>
 
     </LinearLayout>
 
     <fragment
         android:id="@+id/map"
-        android:layout_marginTop="63dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="com.google.android.gms.maps.SupportMapFragment"/>
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_below="@+id/linearLayout7" />
 </RelativeLayout>

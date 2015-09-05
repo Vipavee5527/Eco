@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -30,10 +30,10 @@ public class HomeFragment extends Fragment {
         mMap.setMyLocationEnabled(true);
 
 
-        Button btn_recycle = (Button) v.findViewById(R.id.btn_recycle);
-        Button btn_foodscrape = (Button) v.findViewById(R.id.btn_foodscrape);
-        Button btn_landfill = (Button) v.findViewById(R.id.btn_landfill);
-        Button btn_freecycle = (Button) v.findViewById(R.id.btn_freecycle);
+        ImageButton btn_recycle = (ImageButton) v.findViewById(R.id.btn_recycle);
+        ImageButton btn_foodscrape = (ImageButton) v.findViewById(R.id.btn_foodscrape);
+        ImageButton btn_landfill = (ImageButton) v.findViewById(R.id.btn_landfill);
+        ImageButton btn_freecycle = (ImageButton) v.findViewById(R.id.btn_freecycle);
 
 
         btn_recycle.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
                 mMap.addMarker(new MarkerOptions().position(new LatLng(14, 100.38))
                                 .title("Recycle Waste")
                                 .snippet("Recycle Waste Locator")
-                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_freecycle))
+                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle))
                 );
 
             }
@@ -55,10 +55,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(new LatLng(13.6524, 100.4944))
-                                .title("Food Scrap")
-                                .snippet("Food Scrap Locator")
-                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle))
+                mMap.addMarker(new MarkerOptions().position(new LatLng(14, 100.38))
+                                        .title("FoodScrape")
+                                        .snippet("FoodScrape Locator")
+                                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_foodscrape))
                 );
             }
         });
@@ -80,10 +80,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(new LatLng(13.89, 100.55))
-                                .title("Freecycle Stuff")
-                                .snippet("Freecycle Stuff Locator")
-                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_foodscrape))
+                mMap.addMarker(new MarkerOptions().position(new LatLng(13.6524, 100.4944))
+                                .title("Freecycle Stuffs")
+                                .snippet("Freecycle Stuffs Locator")
+                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_freecycle))
                 );
 
             }
