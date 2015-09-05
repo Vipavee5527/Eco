@@ -46,6 +46,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.3333333"
                 android:layout_gravity="right"
+                android:src="@mipmap/shopbtn"
                 android:layout_alignParentRight="true" />
 
             <ImageButton

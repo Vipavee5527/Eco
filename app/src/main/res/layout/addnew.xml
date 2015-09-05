@@ -17,54 +17,60 @@
         <TableRow>
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_pause_light" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/recycleyellow" />
 
             <Button
                 android:id="@+id/btn_add_menu1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00000000"
-                android:text="Recycled Waste" />
+                android:text="Recycled Waste"
+                android:padding="4dp"
+                android:textColor="#F3C05D"/>
         </TableRow>
 
         <TableRow>
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_pause_light" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/fodscrappink" />
 
             <Button
                 android:id="@+id/btn_add_menu2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00000000"
-                android:text="Food Scrape" />
+                android:text="Food Scrape"
+                android:padding="4dp"
+                android:textColor="#FE8EA3"/>
         </TableRow>
 
         <TableRow>
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_pause_light" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/landfillblue" />
 
             <Button
                 android:id="@+id/btn_add_menu3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#00000000"
-                android:text="Landfill" />
+                android:text="Landfill"
+                android:padding="4dp"
+                android:textColor="#66CBE6"/>
         </TableRow>
 
         <TableRow>
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_pause_light" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/freecyclepurple" />
 
             <Button
                 android:id="@+id/btn_add_menu4"
@@ -72,15 +78,16 @@
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:text="Freecycle Stuffs"
-                android:padding="4dp"/>
+                android:padding="4dp"
+                android:textColor="#C5A2CC"/>
         </TableRow>
 
         <TableRow>
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_pause_light" />
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@mipmap/requestgree" />
 
             <Button
                 android:id="@+id/btn_add_menu5"
@@ -88,7 +95,8 @@
                 android:layout_height="wrap_content"
                 android:background="#00000000"
                 android:text="Add Request"
-                android:padding="4dp"/>
+                android:padding="4dp"
+                android:textColor="#96DB4E"/>
         </TableRow>
 
     </TableLayout>
