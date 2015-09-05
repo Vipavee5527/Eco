@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Intent;
 
 import com.parse.Parse;
+import com.parse.ParseFacebookUtils;
 import com.parse.ParseUser;
 
 /**
@@ -15,6 +16,7 @@ public class EcoSpot extends Application {
         super.onCreate();
 
         Parse.initialize(this, "3JVUVxK7YwlophTfcpYOCZcxuh4VG9zmTl1wi2r2", "sFBwfAWFhvYgoMPaM5sYCzGlLQAB1Jbh8SfEu0HY");
+        ParseFacebookUtils.initialize(getApplicationContext());
 
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {
