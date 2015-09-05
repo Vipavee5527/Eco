@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    >
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -85,14 +86,14 @@
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/mail" />
+                                android:src="@mipmap/accounticon" />
 
                             <EditText
-                                android:id="@+id/editText2"
+                                android:id="@+id/login_username"
                                 android:layout_width="250dp"
                                 android:layout_height="wrap_content"
                                 android:ems="10"
-                                android:hint="E-Mail"
+                                android:hint="Username"
                                 android:inputType="textEmailAddress" />
 
                         </LinearLayout>
@@ -111,7 +112,7 @@
                                 android:src="@mipmap/password" />
 
                             <EditText
-                                android:id="@+id/editText"
+                                android:id="@+id/login_pw"
                                 android:layout_width="250dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
@@ -197,7 +198,7 @@
                         android:background="#003b579d"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:shadowColor="#ffffff"
+
                         android:text="Sign in with Facebook"
                         android:textColor="#3b579d"
                         android:translationZ="0dp" />

@@ -1,6 +1,7 @@
 package com.example.gigie.eco;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.parse.Parse;
-import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,16 +30,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppBaseTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Parse.enableLocalDatastore(this);
+//        Parse.enableLocalDatastore(this);
 
-        Parse.initialize(this, "3JVUVxK7YwlophTfcpYOCZcxuh4VG9zmTl1wi2r2", "sFBwfAWFhvYgoMPaM5sYCzGlLQAB1Jbh8SfEu0HY");
+      //  Parse.initialize(this, "3JVUVxK7YwlophTfcpYOCZcxuh4VG9zmTl1wi2r2", "sFBwfAWFhvYgoMPaM5sYCzGlLQAB1Jbh8SfEu0HY");
 
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
+      //  ParseObject testObject = new ParseObject("TestObject");
+    //    testObject.put("foo", "bar");
+    //    testObject.saveInBackground();
 
 
 
@@ -212,7 +213,12 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            ParseUser.logOut();
+            ParseUser currentUser = ParseUser.getCurrentUser(); // this will now be null
+            if (currentUser == null){
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
             return true;
         }
 
