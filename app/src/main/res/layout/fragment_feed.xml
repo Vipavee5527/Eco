@@ -2,12 +2,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3b55ff">
+    android:background="#f8fff7">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Feed Fragment" />
+    <ListView
+        android:id="@+id/list_feed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
 </ScrollView>
+
+
+
