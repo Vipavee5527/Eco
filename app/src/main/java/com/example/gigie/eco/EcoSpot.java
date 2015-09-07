@@ -11,7 +11,10 @@ import com.parse.ParseUser;
  * Created by gigie on 9/5/15 AD.
  */
 public class EcoSpot extends Application {
+
+    static final String TAG = "MyApp";
     @Override
+
     public void onCreate() {
         super.onCreate();
 
