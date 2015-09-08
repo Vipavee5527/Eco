@@ -22,10 +22,10 @@ public class FragmentSelectFood  extends Fragment {
 
             @Override
             public void onClick(View v) {
-                FoodScrapFragment foodScrapFragment = new FoodScrapFragment();
+                CoffeeFragment coffeeFragment = new CoffeeFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, foodScrapFragment);
+                transaction.replace(R.id.fragment_container, coffeeFragment);
                 //transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -36,10 +36,10 @@ public class FragmentSelectFood  extends Fragment {
 
             @Override
             public void onClick(View v) {
-                FoodScrapFragment foodScrapFragment = new FoodScrapFragment();
+                FoodSFragment foodSFragment = new FoodSFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, foodScrapFragment);
+                transaction.replace(R.id.fragment_container, foodSFragment);
                 //transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -50,10 +50,10 @@ public class FragmentSelectFood  extends Fragment {
 
             @Override
             public void onClick(View v) {
-                FoodScrapFragment foodScrapFragment = new FoodScrapFragment();
+                CookingFragment cookingFragment = new CookingFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, foodScrapFragment);
+                transaction.replace(R.id.fragment_container, cookingFragment);
                 //transaction.addToBackStack(null);
                 transaction.commit();
             }

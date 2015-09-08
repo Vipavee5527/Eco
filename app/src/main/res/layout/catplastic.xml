@@ -192,6 +192,16 @@
             android:layout_marginTop="15dp" />
 
     </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE"
+            android:id="@+id/btn_saveplastic"
+            android:layout_gravity="center_horizontal"
+            android:background="#39c202"
+            android:layout_below="@+id/linearLayout5"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"/>
 
 
 

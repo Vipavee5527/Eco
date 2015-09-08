@@ -70,7 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout2"
         android:layout_alignLeft="@+id/linearLayout2"
-        android:layout_alignStart="@+id/linearLayout2">
+        android:layout_alignStart="@+id/linearLayout2"
+        android:id="@+id/pricecoffee">
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,6 +100,16 @@
             android:layout_marginLeft="20dp" />
 
     </LinearLayout>
-    </RelativeLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:id="@+id/btn_savecoffee"
+        android:layout_gravity="center_horizontal"
+        android:background="#39c202"
+        android:layout_below="@+id/pricecoffee"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"/>
+</RelativeLayout>
 </ScrollView>
 

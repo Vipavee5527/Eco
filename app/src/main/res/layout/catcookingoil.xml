@@ -73,7 +73,8 @@
         android:layout_alignLeft="@+id/linearLayout2"
         android:layout_alignStart="@+id/linearLayout2"
         android:layout_below="@+id/linearLayout2"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:id="@+id/pricecooking">
 
         <TextView
             android:layout_width="wrap_content"
@@ -102,6 +103,16 @@
             android:textSize="20dp" />
 
     </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAVE"
+            android:id="@+id/btn_savecooking"
+            android:layout_gravity="center_horizontal"
+            android:background="#39c202"
+            android:layout_below="@+id/pricecooking"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"/>
     </RelativeLayout>
 </ScrollView>
 

@@ -22,10 +22,10 @@ public class FragmentSelectRecycle extends Fragment {
 
             @Override
             public void onClick(View v) {
-                RecycleShopFragment recycleShopFragment = new RecycleShopFragment();
+                PaperFragment paperFragment = new PaperFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, recycleShopFragment);
+                transaction.replace(R.id.fragment_container, paperFragment);
                 //transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -36,10 +36,10 @@ public class FragmentSelectRecycle extends Fragment {
 
             @Override
             public void onClick(View v) {
-                RecycleShopFragment recycleShopFragment = new RecycleShopFragment();
+                PlasticFragment plasticFragment = new PlasticFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, recycleShopFragment);
+                transaction.replace(R.id.fragment_container, plasticFragment);
                 //transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -50,10 +50,10 @@ public class FragmentSelectRecycle extends Fragment {
 
             @Override
             public void onClick(View v) {
-                RecycleShopFragment recycleShopFragment = new RecycleShopFragment();
+                MetalFragment metalFragment = new MetalFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, recycleShopFragment);
+                transaction.replace(R.id.fragment_container, metalFragment);
                 //transaction.addToBackStack(null);
                 transaction.commit();
             }
@@ -64,10 +64,10 @@ public class FragmentSelectRecycle extends Fragment {
 
             @Override
             public void onClick(View v) {
-                RecycleShopFragment recycleShopFragment = new RecycleShopFragment();
+                GlassFragment glassFragment = new GlassFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.fragment_container, recycleShopFragment);
+                transaction.replace(R.id.fragment_container, glassFragment);
                 //transaction.addToBackStack(null);
                 transaction.commit();
             }

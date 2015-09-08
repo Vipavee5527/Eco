@@ -12,10 +12,11 @@ import android.widget.Button;
 /**
  * Created by admin on 9/3/2015.
  */
-public class RecycleShopFragment extends Fragment{
+public class RecycleShopFragment extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.create_recycleshop, null, false);
+        View v = inflater.inflate(R.layout.create_recycleshop, null, true);
 
 
         Button selectcatRecycle = (Button) v.findViewById(R.id.btn_cat_recycle);
@@ -32,7 +33,6 @@ public class RecycleShopFragment extends Fragment{
                 transaction.commit();
             }
         });
-
 
 
         return v;

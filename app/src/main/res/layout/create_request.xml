@@ -183,7 +183,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:id="@+id/peroid">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -222,8 +223,21 @@
 
 
             </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DONE"
+                android:id="@+id/btn_donereq"
+                android:layout_gravity="center_horizontal"
+                android:background="#39c202"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:paddingBottom="10dp"
+                android:layout_below="@+id/peroid"/>
 
         </LinearLayout>
+
+
 
     </RelativeLayout>
 </ScrollView>

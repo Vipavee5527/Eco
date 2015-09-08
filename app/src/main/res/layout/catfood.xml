@@ -70,7 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout2"
         android:layout_alignRight="@+id/linearLayout2"
-        android:layout_alignEnd="@+id/linearLayout2">
+        android:layout_alignEnd="@+id/linearLayout2"
+        android:id="@+id/pricefooscrap">
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,10 +98,16 @@
             android:textSize="20dp"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="18dp" />
-
-
-
-
     </LinearLayout>
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="SAVE"
+         android:id="@+id/btn_savefoodscrap"
+         android:layout_gravity="center_horizontal"
+         android:background="#39c202"
+         android:layout_below="@+id/pricefooscrap"
+         android:layout_centerHorizontal="true"
+         android:layout_marginTop="30dp"/>
  </RelativeLayout>
 </ScrollView>

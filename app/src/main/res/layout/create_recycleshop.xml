@@ -227,10 +227,11 @@
 
 
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp">
+            android:layout_marginTop="2dp"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/btn_pick_location"
@@ -241,8 +242,17 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:text="Pick Up Location"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DONE"
+                android:id="@+id/btn_donerecycle"
+                android:layout_gravity="center_horizontal"
+                android:background="#39c202"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"/>
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
