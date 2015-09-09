@@ -39,7 +39,8 @@ public class NewsfeedAdapter extends ArrayAdapter<String> {
         txt1.setText(username[position]);
         txt2.setText(comment[position]);
 
-        imageView.setImageResource(imageId[position]);
+        // imageView.setImageResource(imageId[position]);
+
         return rowView;
     }
 }

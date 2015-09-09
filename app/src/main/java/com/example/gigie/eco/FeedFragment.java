@@ -57,14 +57,16 @@ public class FeedFragment extends Fragment {
                 if (e == null) {
                     Log.i(">>>>>>>>>>>>>>>>>>>>>", "Retrieved " + scoreList.size() + " scores"); // Get List size
                     username = new String[scoreList.size()+1];
-                    comment = new String[scoreList.size()+1];
-                    imageId = new String[scoreList.size()+1];
+                    comment  = new String[scoreList.size()+1];
+                    imageId  = new String[scoreList.size()+1];
+
+                    int i = 1;
 
                     for (ParseObject dealsObject : scoreList) {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.
-                        int i = 1;
-                        username[i]rror = (String) dealsObject.get("User");
-                        comment[i] = (String) dealsObject.get("Message");
+
+                        username[i] = (String) dealsObject.get("User");
+                        comment[i]  = (String) dealsObject.get("Message");
 
                         Log.i(">>>>>>>", comment[i]);
 
