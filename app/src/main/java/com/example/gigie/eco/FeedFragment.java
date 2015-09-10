@@ -56,11 +56,11 @@ public class FeedFragment extends Fragment {
             public void done(List<ParseObject> scoreList, ParseException e) {
                 if (e == null) {
                     Log.i(">>>>>>>>>>>>>>>>>>>>>", "Retrieved " + scoreList.size() + " scores"); // Get List size
-                    username = new String[scoreList.size()+1];
-                    comment  = new String[scoreList.size()+1];
-                    imageId  = new String[scoreList.size()+1];
+                    username = new String[scoreList.size()];
+                    comment  = new String[scoreList.size()];
+                    imageId  = new String[scoreList.size()];
 
-                    int i = 1;
+                    int i = 0;
 
                     for (ParseObject dealsObject : scoreList) {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.
@@ -71,6 +71,12 @@ public class FeedFragment extends Fragment {
                         Log.i(">>>>>>>", comment[i]);
 
                         i++;
+                    }
+
+                    if(getActivity() == null){
+                        Log.d("love","get activity null");
+                    } else{
+                        Log.d("love","get activity not null");
                     }
 
                     NewsfeedAdapter newsfeedAdapter = new NewsfeedAdapter(getActivity(), username, comment, pic);

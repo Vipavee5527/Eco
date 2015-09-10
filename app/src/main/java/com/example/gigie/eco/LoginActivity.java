@@ -128,8 +128,7 @@ public class LoginActivity extends AppCompatActivity {
                     showUserDetailsActivity();
 
 
-                } else {
-                    Log.d(EcoSpot.TAG, "User logged in through Facebook!");
+                } else { Log.d(EcoSpot.TAG, "User logged in through Facebook!");
                     showUserDetailsActivity();
                 }
             }

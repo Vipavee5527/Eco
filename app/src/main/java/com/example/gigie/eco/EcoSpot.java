@@ -18,8 +18,12 @@ public class EcoSpot extends Application {
     public void onCreate() {
         super.onCreate();
 
+
+        Parse.enableLocalDatastore(this);
         Parse.initialize(this, "3JVUVxK7YwlophTfcpYOCZcxuh4VG9zmTl1wi2r2", "sFBwfAWFhvYgoMPaM5sYCzGlLQAB1Jbh8SfEu0HY");
+
         ParseFacebookUtils.initialize(getApplicationContext());
+
 
         ParseUser currentUser = ParseUser.getCurrentUser();
         if (currentUser != null) {

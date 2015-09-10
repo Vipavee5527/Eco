@@ -19,9 +19,9 @@ public class NewsfeedAdapter extends ArrayAdapter<String> {
     private final String[] comment;
     private final Integer[] imageId;
 
-    public NewsfeedAdapter(Activity context, String[] username, String[] comment, Integer[] imageId) {
-        super(context, R.layout.listview, username);
-        this.context = context;
+    public NewsfeedAdapter(Activity ac, String[] username, String[] comment, Integer[] imageId) {
+        super(ac, R.layout.listview, username);
+        this.context = ac;
         this.username = username;
         this.comment = comment;
         this.imageId = imageId;

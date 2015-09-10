@@ -40,7 +40,7 @@ public class CustomListViewAdapter extends ArrayAdapter<String> {
         txt1.setText(txtLine1[position]);
         txt2.setText(txtLine2[position]);
 
-        imageView.setImageResource(imageId[position]);
+//        imageView.setImageResource(imageId[position]);
         return rowView;
     }
 
