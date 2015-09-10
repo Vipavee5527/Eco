@@ -1,5 +1,6 @@
 package com.example.gigie.eco;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -11,13 +12,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.widget.ProfilePictureView;
 import com.parse.FindCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -40,6 +50,11 @@ public class ProfileFragment extends Fragment {
 
     String[] description = {"Dummy 1-2", "Dummy2-2", "Dummy 3-2", "Dummy 4-2", "Dummy 5-2", "Dummy 6-2"};
 
+    boolean doubleBackToExitPressedOnce = false;
+    private ProfilePictureView userProfilePictureView;
+    private TextView userNameView;
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,7 +66,17 @@ public class ProfileFragment extends Fragment {
         ImageButton request = (ImageButton) v.findViewById(R.id.request);
         final ListView listView = (ListView) v.findViewById(R.id.list_profile);
 
-//        >>>SELECT by condition
+        userProfilePictureView = (ProfilePictureView) v.findViewById(R.id.userProfilePicture);
+        userNameView = (TextView) v.findViewById(R.id.displayname);
+
+        //Fetch Facebook user info if it is logged
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if ((currentUser != null) && currentUser.isAuthenticated()) {
+            makeMeRequest();
+        }
+
+
+        //        >>>SELECT by condition
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Shop");
         // query.whereEqualTo("User","User1"); // WHERE
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -86,9 +111,6 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
-
-
-
 
 
 //        >>>SELECT by condition
@@ -128,7 +150,6 @@ public class ProfileFragment extends Fragment {
         });
 
 
-
         shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,6 +175,8 @@ public class ProfileFragment extends Fragment {
                 listView.setAdapter(adapter);
             }
         });
+
+
 
 
         return v;
@@ -198,4 +221,141 @@ public class ProfileFragment extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // Check if the user is currently logged
+            // and show any cached content
+            updateViewsWithProfileInfo();
+        } else {
+            // If the user is not logged in, go to the
+            // activity showing the login view.
+            startLoginActivity();
+        }
+    }
+
+    private void makeMeRequest() {
+        GraphRequest request = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
+                        if (jsonObject != null) {
+                            JSONObject userProfile = new JSONObject();
+
+                            try {
+                                userProfile.put("facebookId", jsonObject.getLong("id"));
+                                userProfile.put("name", jsonObject.getString("name"));
+
+
+                                // Save the user profile info in a user property
+                                ParseUser currentUser = ParseUser.getCurrentUser();
+                                currentUser.put("profile", userProfile);
+                                currentUser.saveInBackground();
+                                currentUser.put("name", userProfile.get("name"));
+                                currentUser.saveInBackground();
+
+                                // Show the user info
+                                updateViewsWithProfileInfo();
+                            } catch (JSONException e) {
+                                Log.d(EcoSpot.TAG,
+                                        "Error parsing returned user data. " + e);
+                            }
+                        } else if (graphResponse.getError() != null) {
+                            switch (graphResponse.getError().getCategory()) {
+                                case LOGIN_RECOVERABLE:
+                                    Log.d(EcoSpot.TAG,
+                                            "Authentication error: " + graphResponse.getError());
+                                    break;
+
+                                case TRANSIENT:
+                                    Log.d(EcoSpot.TAG,
+                                            "Transient error. Try again. " + graphResponse.getError());
+                                    break;
+
+                                case OTHER:
+                                    Log.d(EcoSpot.TAG,
+                                            "Some other error: " + graphResponse.getError());
+                                    break;
+                            }
+                        }
+                    }
+                });
+
+        request.executeAsync();
+    }
+
+    private void updateViewsWithProfileInfo() {
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser.has("profile")) {
+            JSONObject userProfile = currentUser.getJSONObject("profile");
+            try {
+
+                if (userProfile.has("facebookId")) {
+                    userProfilePictureView.setProfileId(userProfile.getString("facebookId"));
+                } else {
+                    // Show the default, blank user profile picture
+                    userProfilePictureView.setProfileId(null);
+                }
+
+                if (userProfile.has("name")) {
+                    userNameView.setText(userProfile.getString("name"));
+                } else {
+                    userNameView.setText("");
+                }
+
+            } catch (JSONException e) {
+                Log.d(EcoSpot.TAG, "Error parsing saved user data.");
+            }
+        }
+    }
+
+
+    public void onLogoutClick(View v) {
+        logout();
+    }
+
+    private void logout() {
+        // Log the user out
+        ParseUser.logOut();
+
+        // Go to the login view
+        startLoginActivity();
+    }
+
+    private void startLoginActivity() {
+        Intent intent = new Intent(getActivity(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+
+  /*  //@Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            getActivity().finish();
+        } else {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(getActivity(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        }
+    }
+
+*/
 }
+
