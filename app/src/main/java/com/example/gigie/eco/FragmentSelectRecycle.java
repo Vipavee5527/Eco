@@ -89,7 +89,6 @@ public class FragmentSelectRecycle extends Fragment {
 
 
 
-
         return v;
 
     }

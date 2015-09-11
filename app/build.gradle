@@ -26,4 +26,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.google.android.gms:play-services:7.8.0'
     compile 'com.parse.bolts:bolts-android:1.+'
+    compile 'com.inthecheesefactory.thecheeselibrary:stated-fragment-support-v4:0.9.3'
 }

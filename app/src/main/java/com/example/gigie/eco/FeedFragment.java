@@ -21,6 +21,7 @@ import java.util.List;
  */
 public class FeedFragment extends Fragment {
 
+
     String[] username = {"User 1", "User 2", "User 3", "User 4", "User 5", "User 6", "User 7", "User 8"};
     String[] comment = {"Comment 1 Comment 1 Comment 1 Comment 1 Comment 1 Comment 1 Comment 1 Comment 1 Comment 1 Comment 1",
             "Comment 2 Comment 2 Comment 2 Comment 2 Comment 2 Comment 2 Comment 2 Comment 2 Comment 2 Comment 2 Comment 2",
@@ -43,11 +44,13 @@ public class FeedFragment extends Fragment {
 
     Integer[] pic = {0,R.drawable.cast_ic_notification_0, R.drawable.bigsofaforu};
 
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_feed, null, false);
-
+        
 
         //        >>>SELECT by condition
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Feed");

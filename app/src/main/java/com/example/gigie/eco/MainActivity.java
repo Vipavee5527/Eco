@@ -3,6 +3,7 @@ package com.example.gigie.eco;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.common_signin_btn_text_dark,
             R.drawable.ic_cast_on_2_light
     };
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 HomeFragment homeFragment = new HomeFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, homeFragment);
-                //transaction.addToBackStack(null);
+                transaction.addToBackStack(null);
                 transaction.commit();
             }
         });
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 FeedFragment feedFragment = new FeedFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, feedFragment);
-                //transaction.addToBackStack(null);
+                transaction.addToBackStack(null);
                 transaction.commit();
 
             }
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 //transaction.replace(R.id.fragment_container, addFragment);
-                //transaction.addToBackStack(null);
+                transaction.addToBackStack(null);
                 //transaction.commit();
                 final Dialog dialog = new Dialog(v.getContext());
                 dialog.setContentView(R.layout.addnew);
@@ -101,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                         RecycleShopFragment recycleShopFragment = new RecycleShopFragment();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, recycleShopFragment);
-                        //transaction.addToBackStack(null);
+                        transaction.addToBackStack(null);
                         transaction.commit();
                         dialog.dismiss();
                     }
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         FoodScrapFragment foodScrapFragment = new FoodScrapFragment();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, foodScrapFragment);
-                        //transaction.addToBackStack(null);
+                        transaction.addToBackStack(null);
                         transaction.commit();
                         dialog.dismiss();
                     }
@@ -130,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         LandFillFragment landFillFragment = new LandFillFragment();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, landFillFragment);
-                        //transaction.addToBackStack(null);
+                        transaction.addToBackStack(null);
                         transaction.commit();
                         dialog.dismiss();
                     }
@@ -145,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                         FreeCycleFragment freeCycleFragment = new FreeCycleFragment();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, freeCycleFragment);
-                        //transaction.addToBackStack(null);
+                        transaction.addToBackStack(null);
                         transaction.commit();
                         dialog.dismiss();
                     }
@@ -160,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                         AddRequestFragment addRequestFragment = new AddRequestFragment();
                         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.fragment_container, addRequestFragment);
-                        //transaction.addToBackStack(null);
+                        transaction.addToBackStack(null);
                         transaction.commit();
                         dialog.dismiss();
                     }
@@ -178,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
                 SearchFragment searchFragment = new SearchFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, searchFragment);
-                //transaction.addToBackStack(null);
+                transaction.addToBackStack(null);
                 transaction.commit();
 
 
@@ -191,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 ProfileFragment profileFragment = new ProfileFragment();
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.fragment_container, profileFragment);
-                //transaction.addToBackStack(null);
+                transaction.addToBackStack(null);
                 transaction.commit();
 
             }
@@ -223,5 +225,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (doubleBackToExitPressedOnce) {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        } else {
+            this.doubleBackToExitPressedOnce = true;
+            Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+        }
     }
 }

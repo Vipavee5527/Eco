@@ -1,5 +1,6 @@
 package com.example.gigie.eco;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -53,6 +54,7 @@ public class ProfileFragment extends Fragment {
     boolean doubleBackToExitPressedOnce = false;
     private ProfilePictureView userProfilePictureView;
     private TextView userNameView;
+    private Dialog progressDialog;
 
 
     @Nullable
@@ -69,6 +71,10 @@ public class ProfileFragment extends Fragment {
         userProfilePictureView = (ProfilePictureView) v.findViewById(R.id.userProfilePicture);
         userNameView = (TextView) v.findViewById(R.id.displayname);
 
+
+
+
+
         //Fetch Facebook user info if it is logged
         ParseUser currentUser = ParseUser.getCurrentUser();
         if ((currentUser != null) && currentUser.isAuthenticated()) {
@@ -77,6 +83,7 @@ public class ProfileFragment extends Fragment {
 
 
         //        >>>SELECT by condition
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Shop");
         // query.whereEqualTo("User","User1"); // WHERE
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -333,29 +340,8 @@ public class ProfileFragment extends Fragment {
     }
 
 
-  /*  //@Override
-    public void onBackPressed() {
 
-        if (doubleBackToExitPressedOnce) {
-            Intent intent = new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            getActivity().finish();
-        } else {
-            this.doubleBackToExitPressedOnce = true;
-            Toast.makeText(getActivity(), "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
 
-            new Handler().postDelayed(new Runnable() {
 
-                @Override
-                public void run() {
-                    doubleBackToExitPressedOnce = false;
-                }
-            }, 2000);
-        }
-    }
-
-*/
 }
 

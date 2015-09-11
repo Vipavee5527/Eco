@@ -20,12 +20,19 @@ public class PaperFragment extends Fragment {
         paper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RecycleShopFragment recycleShopFragment = new RecycleShopFragment();
+
+                Fragment recycleShopFragment = new RecycleShopFragment();
                 FragmentManager fragmentManager = getFragmentManager();
+
+
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.replace(R.id.fragment_container, recycleShopFragment);
-                //transaction.addToBackStack(null);
+//                //transaction.addToBackStack(null);
+
+
+                //transaction.getClass();
                 transaction.commit();
+
             }
         });
         return v;

@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_home"
-            android:background="#393836"/>
+            android:background="#ffff"/>
 
         <ImageButton
             android:id="@+id/btn_feed"
@@ -37,7 +37,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_feed"
-            android:background="#393836"
+            android:background="#ffff"
             />
 
         <ImageButton
@@ -45,8 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:src="@mipmap/image_add"
-            android:background="#39C302"
+            android:src="@mipmap/imahe_add"
+            android:background="#ffff"
 
             android:scaleType="centerCrop"
             android:padding="0dp"/>
@@ -57,7 +57,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_search"
-            android:background="#393836"/>
+            android:background="#ffff"/>
 
         <ImageButton
             android:id="@+id/btn_profile"
@@ -65,7 +65,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:src="@mipmap/image_profile"
-            android:background="#393836"/>
+            android:background="#ffff"/>
     </LinearLayout>
 
 </RelativeLayout>
