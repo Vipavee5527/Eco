@@ -17,6 +17,7 @@ public class qqqq extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qqqq);
         setUpMapIfNeeded();
+
     }
 
     @Override
@@ -40,6 +41,7 @@ public class qqqq extends FragmentActivity {
      * stopped or paused), {@link #onCreate(Bundle)} may not be called again so we should call this
      * method in {@link #onResume()} to guarantee that it will be called.
      */
+
     private void setUpMapIfNeeded() {
         // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
