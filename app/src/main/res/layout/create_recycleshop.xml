@@ -12,7 +12,8 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="#ffffff">
 
         <ImageButton
             android:id="@+id/imageButton4"
@@ -160,6 +161,7 @@
             android:orientation="horizontal">
 
             <TextView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -237,11 +239,13 @@
                 android:text="Office paper :" />
 
             <EditText
+                android:id="@+id/priceOfficePaper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
 
         </LinearLayout>
 
@@ -258,11 +262,13 @@
                 android:text="Newspaper :" />
 
             <EditText
+                android:id="@+id/priceNewspaper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
 
 
         </LinearLayout>
@@ -280,11 +286,13 @@
                 android:text="Cardboard :" />
 
             <EditText
+                android:id="@+id/priceCardBoard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -300,11 +308,13 @@
                 android:text="Hard board :" />
 
             <EditText
+                android:id="@+id/priceHardboard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -324,14 +334,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="8"
-                android:hint="Plese specify" />
+                android:id="@+id/paperSpecify"
+                android:hint="Plese specify"
+                android:inputType="text"/>
 
             <EditText
+                android:id="@+id/priceOtherPaper"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
 
@@ -370,11 +384,13 @@
                 android:text="Clear bottle (PET) :" />
 
             <EditText
+                android:id="@+id/pricePet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -390,11 +406,14 @@
                 android:text="Opaque bottle (PP) :" />
 
             <EditText
+
+                android:id="@+id/pricePP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -410,14 +429,17 @@
                 android:text="PVC pipe :" />
 
             <EditText
+                android:id="@+id/pricePvc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -430,11 +452,13 @@
                 android:text="Cables enclosures :" />
 
             <EditText
+                android:id="@+id/priceCable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -450,18 +474,22 @@
                 android:text="Other" />
 
             <EditText
+                android:id="@+id/PlasticSpecify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="8"
-                android:hint="Plese specify" />
+                android:hint="Plese specify"
+                android:inputType="text"/>
 
             <EditText
+                android:id="@+id/priceOtherPlastic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -499,11 +527,13 @@
                 android:text="Aluminum cans :" />
 
             <EditText
+                android:id="@+id/priceCan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -519,11 +549,13 @@
                 android:text="Copper :" />
 
             <EditText
+                android:id="@+id/priceCopper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -539,11 +571,13 @@
                 android:text="Lead :" />
 
             <EditText
+                android:id="@+id/priceLead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -556,14 +590,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Zine :" />
+                android:text="Zinc :" />
 
             <EditText
+                android:id="@+id/priceZinc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -579,11 +615,13 @@
                 android:text="Iron :" />
 
             <EditText
+                android:id="@+id/priceIron"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -599,18 +637,22 @@
                 android:text="Other" />
 
             <EditText
+                android:id="@+id/metalSpecify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="8"
-                android:hint="Plese specify" />
+                android:hint="Plese specify"
+                android:inputType="text"/>
 
             <EditText
+                android:id="@+id/priceMetalOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -648,11 +690,13 @@
                 android:text="Beer bottles :" />
 
             <EditText
+                android:id="@+id/priceBeerBottle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -668,11 +712,13 @@
                 android:text="Bottles scrap :" />
 
             <EditText
+                android:id="@+id/priceBottleScrape"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <LinearLayout
@@ -688,18 +734,22 @@
                 android:text="Other" />
 
             <EditText
+                android:id="@+id/glassSpecify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="8"
-                android:hint="Plese specify" />
+                android:hint="Plese specify"
+                android:inputType="text"/>
 
             <EditText
+                android:id="@+id/priceGlassOther"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="3dp"
                 android:ems="10"
-                android:hint="THB./kg." />
+                android:hint="THB./kg."
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <fragment

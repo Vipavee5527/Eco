@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:layout_gravity="right"
-                android:src="@drawable/shop"
+                android:src="@drawable/tab_shop2"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
                 android:background="#ffff"
@@ -67,11 +67,11 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="0.5"
                 android:text="Request"
-                android:src="@drawable/req"
+                android:src="@drawable/tab_req2"
                 android:layout_alignParentRight="true"
                 android:scaleType="fitXY"
                 android:adjustViewBounds="true"
-                android:background="#0000"
+                android:background="#ffff"
                 android:padding="0dp"/>
         </LinearLayout>
     </LinearLayout>

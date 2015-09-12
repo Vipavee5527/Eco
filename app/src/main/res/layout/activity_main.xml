@@ -9,13 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/Layout_menu"
-        android:background="#e6e6e6"
+        android:background="#ffffff"
         android:orientation="vertical" />
 
     <LinearLayout
         android:id="@+id/Layout_menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal|bottom"
@@ -28,16 +28,17 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:src="@mipmap/image_home"
-            android:background="#ffff"/>
+            android:src="@drawable/locator"
+
+            android:background="#f6f6f6"/>
 
         <ImageButton
             android:id="@+id/btn_feed"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:src="@mipmap/image_feed"
-            android:background="#ffff"
+            android:src="@drawable/news"
+            android:background="#f6f6f6"
             />
 
         <ImageButton
@@ -45,8 +46,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:src="@mipmap/imahe_add"
-            android:background="#ffff"
+            android:src="@mipmap/image_add"
+            android:background="#f6f6f6"
 
             android:scaleType="centerCrop"
             android:padding="0dp"/>
@@ -56,16 +57,16 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:src="@mipmap/image_search"
-            android:background="#ffff"/>
+            android:src="@drawable/search"
+            android:background="#f6f6f6"/>
 
         <ImageButton
             android:id="@+id/btn_profile"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:src="@mipmap/image_profile"
-            android:background="#ffff"/>
+            android:src="@drawable/profile"
+            android:background="#f6f6f6"/>
     </LinearLayout>
 
 </RelativeLayout>
