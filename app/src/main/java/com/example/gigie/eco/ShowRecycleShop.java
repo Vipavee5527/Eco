@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -182,8 +184,15 @@ public class ShowRecycleShop extends Fragment {
                         address.setText(dealsObject.get("address").toString());
                         telephone.setText(dealsObject.get("telephone").toString());
                         landmark.setText(dealsObject.get("landmark").toString());
-                        mMap.addMarker(new MarkerOptions().position(new LatLng((double)dealsObject.get("lat"),
-                                (double)dealsObject.get("lng"))).icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle)));
+                        mMap.addMarker(new MarkerOptions().position(new LatLng((double) dealsObject.get("lat"),
+                                (double) dealsObject.get("lng"))).icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle)));
+                        CameraPosition cameraPosition = new CameraPosition.Builder()
+                                .target(new LatLng((double) dealsObject.get("lat"),(double) dealsObject.get("lng")))      // Sets the center of the map to location user
+                                .zoom(17)                   // Sets the zoom
+                                .bearing(90)                // Sets the orientation of the camera to east
+                                .tilt(40)                   // Sets the tilt of the camera to 30 degrees
+                                .build();                   // Creates a CameraPosition from the builder
+                        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                     }
 
                 } else {

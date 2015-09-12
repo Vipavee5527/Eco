@@ -2,6 +2,9 @@ package com.example.gigie.eco;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +14,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 /**
  * Created by gigie on 8/31/15 AD.
@@ -22,6 +32,8 @@ public class HomeFragment extends Fragment {
     private SupportMapFragment fragment;
     MarkerOptions markerOptions;
     LatLng latLng;
+
+    Marker marker;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,17 +49,68 @@ public class HomeFragment extends Fragment {
         ImageButton btn_landfill = (ImageButton) v.findViewById(R.id.btn_landfill);
         ImageButton btn_freecycle = (ImageButton) v.findViewById(R.id.btn_freecycle);
 
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Shop");
+                query.whereContains("shopName", marker.getTitle());
+                //query.whereMatches("shopName", "o+");
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> scoreList, ParseException e) {
+                        if (e == null) {
+                            Log.i("Shop", "Retrieved " + scoreList.size() + " scores"); // Get List size
+                            for (ParseObject dealsObject : scoreList) {
+                                // use dealsObject.get('columnName') to access the properties of the Deals object.
+
+                                ShowRecycleShop showRecycleShop = new ShowRecycleShop();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", (int) dealsObject.get("shopID"));
+                                showRecycleShop.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showRecycleShop);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+                            }
+
+                        } else {
+                            Log.i("score", "Error: " + e.getMessage());
+                        }
+                    }
+                });
+
+
+            }
+        });
+
 
         btn_recycle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(new LatLng(14, 100.38))
-                                .title("Recycle Waste")
-                                .snippet("Recycle Waste Locator")
-                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle))
-                );
+                ParseQuery<ParseObject> query = ParseQuery.getQuery("Shop");
+                query.whereContains("type", "recycle");
+                //query.whereMatches("shopName", "o+");
+                query.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> scoreList, ParseException e) {
+                        if (e == null) {
+                            Log.i("Shop", "Retrieved " + scoreList.size() + " scores"); // Get List size
+                            for (ParseObject dealsObject : scoreList) {
+                                // use dealsObject.get('columnName') to access the properties of the Deals object.
+
+                                marker = mMap.addMarker(new MarkerOptions().position(new LatLng((double) dealsObject.get("lat"),
+                                        (double) dealsObject.get("lng")))
+                                        .title(dealsObject.get("shopName").toString())
+                                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle)));
+                                marker.showInfoWindow();
+                            }
+
+                        } else {
+                            Log.i("score", "Error: " + e.getMessage());
+                        }
+                    }
+                });
+
 
             }
         });
