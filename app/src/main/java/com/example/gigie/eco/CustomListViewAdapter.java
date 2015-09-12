@@ -18,18 +18,18 @@ public class CustomListViewAdapter extends ArrayAdapter<String> {
     private final Activity context;
     private final String[] txtLine1;
     private final String[] txtLine2;
-    private final Integer[] imageId;
+    //private final Integer[] imageId;
 
-    public CustomListViewAdapter(Activity context, String[] txtLine1, String[] txtLine2, Integer[] imageId) {
+    public CustomListViewAdapter(Activity context, String[] txtLine1, String[] txtLine2) {
         super(context, R.layout.listview, txtLine1);
         this.context = context;
         this.txtLine1 = txtLine1;
         this.txtLine2 = txtLine2;
-        this.imageId = imageId;
+        //this.imageId = imageId;
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.listview, null, true);
 
@@ -41,6 +41,7 @@ public class CustomListViewAdapter extends ArrayAdapter<String> {
         txt2.setText(txtLine2[position]);
 
 //        imageView.setImageResource(imageId[position]);
+
         return rowView;
     }
 

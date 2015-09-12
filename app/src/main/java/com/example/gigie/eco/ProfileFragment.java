@@ -7,10 +7,13 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -93,12 +96,13 @@ public class ProfileFragment extends Fragment {
                     shopname = new String[scoreList.size()];
                     type = new String[scoreList.size()];
                     image = new Integer[scoreList.size()];
+                    final int[] sID = new int[scoreList.size()];
 
                     int i = 0;
 
                     for (ParseObject dealsObject : scoreList) {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.
-
+                        sID[i] = (int) dealsObject.get("shopID");
                         shopname[i] = (String) dealsObject.get("shopName");
                         type[i] = (String) dealsObject.get("type");
                         ParseFile im = (ParseFile) dealsObject.getParseFile("image");
@@ -111,8 +115,24 @@ public class ProfileFragment extends Fragment {
                         i++;
                     }
 
-                    CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type, image);
+                    CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
                     listView.setAdapter(adapter);
+
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            ShowRecycleShop showRecycleShop = new ShowRecycleShop();
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            Bundle args = new Bundle();
+                            args.putInt("sID", sID[position]);
+                            showRecycleShop.setArguments(args);
+                            transaction.replace(R.id.fragment_container, showRecycleShop);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+                        }
+                    });
                 } else {
                     Log.i("score", "Error: " + e.getMessage());
                 }
@@ -148,8 +168,24 @@ public class ProfileFragment extends Fragment {
                         i++;
                     }
 
-                    CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type, image);
+                    CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
                     listView.setAdapter(adapter);
+//
+//                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                        @Override
+//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                            ShowRecycleShop showRecycleShop = new ShowRecycleShop();
+//                            FragmentManager fm = getFragmentManager();
+//                            FragmentTransaction transaction = fm.beginTransaction();
+//                            Bundle args = new Bundle();
+//                            args.putInt("rID", rID[position]);
+//                            showRecycleShop.setArguments(args);
+//                            transaction.replace(R.id.fragment_container, showRecycleShop);
+//                            transaction.addToBackStack(null);
+//                            transaction.commit();
+//                        }
+//                    });
                 } else {
                     Log.i("score", "Error: " + e.getMessage());
                 }
@@ -160,7 +196,7 @@ public class ProfileFragment extends Fragment {
         shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type, image);
+                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
                 listView.setAdapter(adapter);
             }
         });
@@ -178,7 +214,7 @@ public class ProfileFragment extends Fragment {
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), title, description, image);
+                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), title, description);
                 listView.setAdapter(adapter);
             }
         });
