@@ -181,15 +181,68 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Shop");
+                query3.whereContains("shopName", marker.getTitle());
+                //query.whereMatches("shopName", "o+");
+                query3.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> scoreList, ParseException e) {
+                        if (e == null) {
+                            Log.i("Shop", "Retrieved " + scoreList.size() + " scores"); // Get List size
+                            for (ParseObject dealsObject : scoreList) {
+                                // use dealsObject.get('columnName') to access the properties of the Deals object.
+
+                                ShowLandfill showLandfill = new ShowLandfill();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", (int) dealsObject.get("shopID"));
+                                showLandfill.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showLandfill);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+                            }
+
+                        } else {
+                            Log.i("score", "Error: " + e.getMessage());
+                        }
+                    }
+                });
+
+
+            }
+        });
+
+
         btn_landfill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(new LatLng(13.786, 100.44))
-                                .title("Landfill")
-                                .snippet("Landfill Locator")
-                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_constructor))
-                );
+                ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Shop");
+                query3.whereContains("type", "landfill");
+                query3.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> scoreList, ParseException e) {
+                        if (e == null) {
+                            Log.i("Shop", "Retrieved " + scoreList.size() + " scores"); // Get List size
+                            for (ParseObject dealsObject : scoreList) {
+                                // use dealsObject.get('columnName') to access the properties of the Deals object.
+
+                                marker = mMap.addMarker(new MarkerOptions().position(new LatLng((double) dealsObject.get("lat"),
+                                        (double) dealsObject.get("lng")))
+                                        .title(dealsObject.get("shopName").toString())
+                                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_constructor)));
+                                marker.showInfoWindow();
+                            }
+
+                        } else {
+                            Log.i("score", "Error: " + e.getMessage());
+                        }
+                    }
+                });
 
             }
         });

@@ -10,11 +10,11 @@
         android:orientation="vertical"
         >
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Bang Mod Land"
-            android:id="@+id/button" />
+            android:id="@+id/show_shopName" />
 
         <ImageView
             android:id="@+id/imageButton4"
@@ -170,7 +170,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/itemlocation"
+                android:id="@+id/nearby"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
@@ -274,25 +274,15 @@
 
         </LinearLayout>
 
-        <RelativeLayout
+        <fragment
+            android:id="@+id/map_show"
+            class="com.example.gigie.eco.WorkaroundMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
+            android:layout_below="@+id/linearLayout7"
             android:layout_marginTop="10dp"
-            android:paddingBottom="4dp">
-
-            <Button
-                android:id="@+id/pick_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="Get Direction"/>
-
-        </RelativeLayout>
-
-
+            android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
+
 </ScrollView>

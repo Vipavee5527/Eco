@@ -40,6 +40,7 @@ public class RecycleShopFragment extends Fragment {
     EditText address;
     EditText telephone;
     EditText landmark;
+
     EditText priceOfficepaper;
     EditText priceNewspaper;
     EditText priceCardBoard;
@@ -149,24 +150,6 @@ public class RecycleShopFragment extends Fragment {
         });
 
 
-        //dataGotFromServer = ((EditText) v.findViewById(R.id.shopName)).getText().toString();
-
-
-//        Button selectcatRecycle = (Button) v.findViewById(R.id.btn_cat_recycle);
-//        selectcatRecycle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//
-//
-//            public void onClick(View v) {
-//                FragmentSelectRecycle fragmentSelectRecycle = new FragmentSelectRecycle();
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction transaction = fragmentManager.beginTransaction();
-////                fragmentManager.saveFragmentInstanceState(fragmentSelectRecycle);
-//                transaction.replace(R.id.fragment_container, fragmentSelectRecycle);
-//                transaction.addToBackStack(null);
-//                transaction.commit();
-//            }
-//        });
 
 
         Button doneRecycle = (Button) v.findViewById(R.id.btn_donerecycle);
