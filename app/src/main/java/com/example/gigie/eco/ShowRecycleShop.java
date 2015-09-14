@@ -107,31 +107,6 @@ public class ShowRecycleShop extends Fragment {
         glassSpecify = (TextView) v.findViewById(R.id.show_glassSpecify);
         priceotherGlass = (TextView) v.findViewById(R.id.show_priceGlassOther);
 
-
-//        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-//            @Override
-//            public void onMapClick(LatLng latLng) {
-//                mMap.clear();
-//                mMap.addMarker(new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle)));
-//            }
-//
-//        });
-//
-//        mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener() {
-//            @Override
-//            public boolean onMyLocationButtonClick() {
-//                double lat = mMap.getMyLocation().getLatitude();
-//                double lng = mMap.getMyLocation().getLongitude();
-//                mMap.clear();
-//                mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle)));
-//                return false;
-//            }
-//        });
-
-
-
-
-
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Recycle");
         query2.whereEqualTo("shopID",sID);
         query2.findInBackground(new FindCallback<ParseObject>() {
@@ -140,29 +115,29 @@ public class ShowRecycleShop extends Fragment {
                     Log.i(">>>>>>>>>>>>>>>>>>>>>", "Retrieved " + scoreList.size() + " scores"); // Get List size
                     for (ParseObject dealsObject : scoreList) {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.
-                        priceOfficepaper.setText(dealsObject.get("PriceofficePaper").toString());
-                        priceNewspaper.setText(dealsObject.get("Pricenewspaper").toString());
-                        priceCardBoard.setText(dealsObject.get("Pricecardboard").toString());
-                        priceHardboard.setText(dealsObject.get("PriceHardboard").toString());
+                        priceOfficepaper.setText(dealsObject.get("PriceofficePaper").toString()  + " THB./kg.");
+                        priceNewspaper.setText(dealsObject.get("Pricenewspaper").toString()  + " THB./kg.");
+                        priceCardBoard.setText(dealsObject.get("Pricecardboard").toString()  + " THB./kg.");
+                        priceHardboard.setText(dealsObject.get("PriceHardboard").toString()  + " THB./kg.");
                         paperSpecify.setText(dealsObject.get("paperSpecify").toString());
-                        pricePaperOther.setText(dealsObject.get("PriceofficePaper").toString());
-                        pricePet.setText(dealsObject.get("pricePet").toString());
-                        pricePP.setText(dealsObject.get("pricePP").toString());
-                        pricePvc.setText(dealsObject.get("pricePvc").toString());
-                        priceCable.setText(dealsObject.get("priceCable").toString());
+                        pricePaperOther.setText(dealsObject.get("PriceofficePaper").toString()  + " THB./kg.");
+                        pricePet.setText(dealsObject.get("pricePet").toString() + " THB./kg.");
+                        pricePP.setText(dealsObject.get("pricePP").toString()  + " THB./kg.");
+                        pricePvc.setText(dealsObject.get("pricePvc").toString()  + " THB./kg.");
+                        priceCable.setText(dealsObject.get("priceCable").toString()  + " THB./kg.");
                         plasticSpecify.setText(dealsObject.get("plasticSpecify").toString());
-                        pricePlasticOther.setText(dealsObject.get("pricePlasticOther").toString());
-                        priceCan.setText(dealsObject.get("priceCable").toString());
-                        priceCopper.setText(dealsObject.get("priceCopper").toString());
-                        priceLead.setText(dealsObject.get("priceLead").toString());
-                        priceZinc.setText(dealsObject.get("priceZinc").toString());
-                        priceIron.setText(dealsObject.get("priceIron").toString());
+                        pricePlasticOther.setText(dealsObject.get("pricePlasticOther").toString() + " THB./kg.");
+                        priceCan.setText(dealsObject.get("priceCable").toString() + " THB./kg.");
+                        priceCopper.setText(dealsObject.get("priceCopper").toString() + " THB./kg.");
+                        priceLead.setText(dealsObject.get("priceLead").toString() + " THB./kg.");
+                        priceZinc.setText(dealsObject.get("priceZinc").toString() + " THB./kg.");
+                        priceIron.setText(dealsObject.get("priceIron").toString() + " THB./kg.");
                         MetalSpecify.setText(dealsObject.get("MetalSpecify").toString());
-                        priceMetalOther.setText(dealsObject.get("priceMetalOther").toString());
-                        priceBeerBottle.setText(dealsObject.get("priceBeerBottle").toString());
-                        priceBottleScrape.setText(dealsObject.get("priceBottleScrape").toString());
+                        priceMetalOther.setText(dealsObject.get("priceMetalOther").toString() + " THB./kg.");
+                        priceBeerBottle.setText(dealsObject.get("priceBeerBottle").toString() + " THB./kg.");
+                        priceBottleScrape.setText(dealsObject.get("priceBottleScrape").toString() + " THB./kg.");
                         glassSpecify.setText(dealsObject.get("glassSpecify").toString());
-                        priceotherGlass.setText(dealsObject.get("priceotherGlass").toString());
+                        priceotherGlass.setText(dealsObject.get("priceotherGlass").toString() + " THB./kg.");
                     }
 
                 } else {

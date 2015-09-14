@@ -10,11 +10,11 @@
         android:orientation="vertical"
         >
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Koffee Park"
-            android:id="@+id/button" />
+            android:text="-"
+            android:id="@+id/show_shopName" />
 
         <ImageView
             android:id="@+id/imageButton4"
@@ -92,12 +92,12 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/show_foodscrap_description"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="20dp"
-                android:text="มีกากกาแฟจำนวนมากทุกวัน"/>
+                android:text=" - "/>
 
         </LinearLayout>
 
@@ -114,16 +114,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Location"
+                android:text="Address"
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/location"
+                android:id="@+id/show_foodscrap_location"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="65dp"
                 android:layout_marginTop="20dp"
-                android:text="มจธ."/>
+                android:text=" - "/>
 
         </LinearLayout>
 
@@ -144,12 +144,12 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/telephone"
+                android:id="@+id/show_telephone"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:text="0819196410"/>
+                android:text=" - "/>
 
         </LinearLayout>
 
@@ -170,113 +170,307 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/itemlocation"
+                android:id="@+id/show_nearby"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
                 android:inputType="text"
-                android:text="อาคารศิลปศาตร์"/>
-        </LinearLayout>
+                android:text="-"/>
 
+        </LinearLayout>
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageButton4"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/coffee" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Category"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/itemcat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="20dp"
-                android:inputType="text"
-                android:text="Coffee Ground"/>
-
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                android:text="Coffee Ground"
+                android:textSize="16dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nearby"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Minimum"
-                android:textSize="20dp" />
+                android:text="Minimum :" />
 
             <TextView
-                android:id="@+id/min"
-                android:layout_width="96dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:text="5.0 Kg./Day"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nearby"
-            android:layout_marginLeft="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Price"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="96dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:text="0.00 THB./Kg."
-                />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:paddingBottom="4dp">
-
-            <Button
-                android:id="@+id/pick_location"
+                android:id="@+id/show_minCoffeeGround"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="Get Direction"/>
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
 
-        </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price :" />
+
+            <TextView
+                android:id="@+id/show_priceCoffee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
 
 
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/food" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                android:text="Food Scrap"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minimum :" />
+
+            <TextView
+                android:id="@+id/show_minFoodScrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price :" />
+
+            <TextView
+
+                android:id="@+id/show_priceFoodScrap"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/useoil" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                android:text="Cooking Oil"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minimum :" />
+
+            <TextView
+                android:id="@+id/show_minCookingOil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price :" />
+
+            <TextView
+                android:id="@+id/show_priceCookingOil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/otherfoodscrap" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="15dp"
+                android:text="Other"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minimum :" />
+
+            <TextView
+                android:id="@+id/show_minFoodScrapOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price :" />
+
+            <TextView
+                android:id="@+id/show_priceFoodScrapOther"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other" />
+
+            <TextView
+                android:id="@+id/show_glassSpecify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
+
+            <TextView
+                android:id="@+id/show_priceGlassOther"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text=" - "/>
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/map_show"
+            class="com.example.gigie.eco.WorkaroundMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/linearLayout7"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
 </ScrollView>

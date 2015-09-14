@@ -33,7 +33,6 @@ public class RecycleShopFragment extends Fragment {
 
     private GoogleMap mMap;
     ScrollView mScrollView;
-    Marker marker;
 
 
     EditText shopName;
@@ -80,22 +79,22 @@ public class RecycleShopFragment extends Fragment {
         telephone = (EditText) v.findViewById(R.id.telephone);
         landmark = (EditText) v.findViewById(R.id.nearbylandmark);
         priceOfficepaper = (EditText) v.findViewById(R.id.priceOfficePaper);
-        priceNewspaper=(EditText) v.findViewById(R.id.priceNewspaper);
+        priceNewspaper = (EditText) v.findViewById(R.id.priceNewspaper);
         priceCardBoard = (EditText) v.findViewById(R.id.priceCardBoard);
         priceHardboard = (EditText) v.findViewById(R.id.priceHardboard);
         paperSpecify = (EditText) v.findViewById(R.id.paperSpecify);
-        pricePaperOther=(EditText) v.findViewById(R.id.priceOtherPaper);
+        pricePaperOther = (EditText) v.findViewById(R.id.priceOtherPaper);
         pricePet = (EditText) v.findViewById(R.id.pricePet);
         pricePP = (EditText) v.findViewById(R.id.pricePP);
         pricePvc = (EditText) v.findViewById(R.id.pricePvc);
         priceCable = (EditText) v.findViewById(R.id.priceCable);
         plasticSpecify = (EditText) v.findViewById(R.id.PlasticSpecify);
-        pricePlasticOther=(EditText) v.findViewById(R.id.priceOtherPlastic);
+        pricePlasticOther = (EditText) v.findViewById(R.id.priceOtherPlastic);
         priceCan = (EditText) v.findViewById(R.id.priceCan);
         priceCopper = (EditText) v.findViewById(R.id.priceCopper);
         priceLead = (EditText) v.findViewById(R.id.priceLead);
         priceZinc = (EditText) v.findViewById(R.id.priceZinc);
-        priceIron = (EditText) v. findViewById(R.id.priceIron);
+        priceIron = (EditText) v.findViewById(R.id.priceIron);
         MetalSpecify = (EditText) v.findViewById(R.id.metalSpecify);
         priceMetalOther = (EditText) v.findViewById(R.id.priceMetalOther);
         priceBeerBottle = (EditText) v.findViewById(R.id.priceBeerBottle);
@@ -104,8 +103,6 @@ public class RecycleShopFragment extends Fragment {
         priceotherGlass = (EditText) v.findViewById(R.id.priceGlassOther);
 
         final Marker[] marker = new Marker[1];
-
-
 
 
 //        if (mMap == null) {
@@ -155,7 +152,6 @@ public class RecycleShopFragment extends Fragment {
         //dataGotFromServer = ((EditText) v.findViewById(R.id.shopName)).getText().toString();
 
 
-
 //        Button selectcatRecycle = (Button) v.findViewById(R.id.btn_cat_recycle);
 //        selectcatRecycle.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -173,8 +169,7 @@ public class RecycleShopFragment extends Fragment {
 //        });
 
 
-
-        Button doneRecycle = (Button)v.findViewById(R.id.btn_donerecycle);
+        Button doneRecycle = (Button) v.findViewById(R.id.btn_donerecycle);
         doneRecycle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -235,10 +230,9 @@ public class RecycleShopFragment extends Fragment {
                                     shop.put("landmark", "-");
                                 }
 
-                                shop.put("lat",marker[0].getPosition().latitude);
+                                shop.put("lat", marker[0].getPosition().latitude);
                                 shop.put("lng", marker[0].getPosition().longitude);
                                 shop.saveInBackground();
-
 
 
                                 /////
@@ -250,7 +244,7 @@ public class RecycleShopFragment extends Fragment {
                                 }
 
                                 str = priceNewspaper.getText().toString();
-                                if(!str.equals("")) {
+                                if (!str.equals("")) {
                                     recycle.put("Pricenewspaper", priceNewspaper.getText().toString());
                                 } else {
                                     recycle.put("Pricenewspaper", "-");
@@ -400,8 +394,6 @@ public class RecycleShopFragment extends Fragment {
                                 recycle.saveInBackground();
 
 
-
-
                                 ShowRecycleShop showRecycleShop = new ShowRecycleShop();
                                 FragmentManager fm = getFragmentManager();
                                 FragmentTransaction transaction = fm.beginTransaction();
@@ -420,13 +412,8 @@ public class RecycleShopFragment extends Fragment {
                 });
 
 
-
             }
         });
-
-
-
-
 
 
         return v;

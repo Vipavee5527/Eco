@@ -116,15 +116,68 @@ public class HomeFragment extends Fragment {
         });
 
 
+        mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Shop");
+                query2.whereContains("shopName", marker.getTitle());
+                //query.whereMatches("shopName", "o+");
+                query2.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> scoreList, ParseException e) {
+                        if (e == null) {
+                            Log.i("Shop", "Retrieved " + scoreList.size() + " scores"); // Get List size
+                            for (ParseObject dealsObject : scoreList) {
+                                // use dealsObject.get('columnName') to access the properties of the Deals object.
+
+                                ShowFoodscrape showFoodscrape = new ShowFoodscrape();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", (int) dealsObject.get("shopID"));
+                                showFoodscrape.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showFoodscrape);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+                            }
+
+                        } else {
+                            Log.i("score", "Error: " + e.getMessage());
+                        }
+                    }
+                });
+
+
+            }
+        });
+
+
         btn_foodscrape.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMap.clear();
-                mMap.addMarker(new MarkerOptions().position(new LatLng(14, 100.38))
-                                .title("FoodScrape")
-                                .snippet("FoodScrape Locator")
-                                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_foodscrape))
-                );
+                ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Shop");
+                query2.whereContains("type", "foodscrape");
+                //query.whereMatches("shopName", "o+");
+                query2.findInBackground(new FindCallback<ParseObject>() {
+                    public void done(List<ParseObject> scoreList, ParseException e) {
+                        if (e == null) {
+                            Log.i("Shop", "Retrieved " + scoreList.size() + " scores"); // Get List size
+                            for (ParseObject dealsObject : scoreList) {
+                                // use dealsObject.get('columnName') to access the properties of the Deals object.
+
+                                marker = mMap.addMarker(new MarkerOptions().position(new LatLng((double) dealsObject.get("lat"),
+                                        (double) dealsObject.get("lng")))
+                                        .title(dealsObject.get("shopName").toString())
+                                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_foodscrape)));
+                                marker.showInfoWindow();
+                            }
+
+                        } else {
+                            Log.i("score", "Error: " + e.getMessage());
+                        }
+                    }
+                });
+
             }
         });
 
