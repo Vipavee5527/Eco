@@ -185,42 +185,25 @@ public class LandFillFragment extends Fragment {
                                     landfill.put("endDate", "-");
                                 }
 
-                                str = "";
 
+                                landfill.put("concrete", concrete.isChecked());
+                                landfill.put("sand", sand.isChecked());
+                                landfill.put("stone", stone.isChecked());
 
-                                if (!concrete.isChecked()) {
-                                    landfill.put("concrete", concrete.getText().toString());
-                                } else {
-                                    landfill.put("concrete", "-");
-                                }
-
-
-                                if (!sand.isChecked()) {
-                                    landfill.put("sand", sand.getText().toString());
-                                } else {
-                                    landfill.put("sand", "-");
-                                }
-
-
-                                if (!stone.isChecked()) {
-                                    landfill.put("stone", stone.getText().toString());
-                                } else {
-                                    landfill.put("stone", "-");
-                                }
-
-
-                                if (!other.isChecked()) {
-                                    landfill.put("other", other.getText().toString());
-                                } else {
-                                    landfill.put("other", "-");
-                                }
-
-                                str = otherSpecify.getText().toString();
-                                if (!str.equals("")) {
+                                if (other.isChecked()) {
+                                    landfill.put("other", "true");
                                     landfill.put("otherSpecify", otherSpecify.getText().toString());
                                 } else {
+                                    landfill.put("other", "false");
                                     landfill.put("otherSpecify", "-");
                                 }
+
+//                                str = otherSpecify.getText().toString();
+//                                if (!str.equals("")) {
+//                                    landfill.put("otherSpecify", otherSpecify.getText().toString());
+//                                } else {
+//                                    landfill.put("otherSpecify", "-");
+//                                }
 
 
                                 landfill.saveInBackground();

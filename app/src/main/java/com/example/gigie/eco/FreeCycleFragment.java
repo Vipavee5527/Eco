@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 
 import com.google.android.gms.maps.GoogleMap;
@@ -34,6 +36,9 @@ public class FreeCycleFragment extends Fragment {
     private GoogleMap mMap;
     ScrollView mScrollView;
 
+    ImageButton imageTop;
+
+
     EditText shopName;
     EditText description;
     EditText address;
@@ -48,16 +53,20 @@ public class FreeCycleFragment extends Fragment {
     EditText startDate;
     EditText endDate;
 
+    RadioGroup rg_category;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_freecycle, null, false);
 
+        imageTop = (ImageButton) v.findViewById(R.id.imageButton4);
+
         mScrollView = (ScrollView) v.findViewById(R.id.scrollview_freecycle);
         mMap = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map_pick)).getMap();
         mMap.setMyLocationEnabled(true);
 
+        chair = (RadioButton) v.findViewById(R.id.radio_chair);
 
         shopName = (EditText) v.findViewById(R.id.itemName);
         description = (EditText) v.findViewById(R.id.freecycle_description);
@@ -65,15 +74,17 @@ public class FreeCycleFragment extends Fragment {
         telephone = (EditText) v.findViewById(R.id.telephone);
         landmark = (EditText) v.findViewById(R.id.nearbylandmark);
 
-        chair = (RadioButton) v.findViewById(R.id.radio_chair);
-        table = (RadioButton) v.findViewById(R.id.radio_table);
-        bed = (RadioButton) v.findViewById(R.id.radio_bed);
-        book = (RadioButton) v.findViewById(R.id.radio_book);
-        clothes = (RadioButton) v.findViewById(R.id.radio_clothes);
-        others = (RadioButton) v.findViewById(R.id.radio_other);
 
         startDate = (EditText) v.findViewById(R.id.startDate);
         endDate = (EditText)v.findViewById(R.id.finishDate);
+
+        rg_category = (RadioGroup) v.findViewById(R.id.radioGroup_cat);
+
+
+
+
+
+
 
         final Marker[] marker = new Marker[1];
 
@@ -81,6 +92,8 @@ public class FreeCycleFragment extends Fragment {
         double lng = 0.1;
         mMap.clear();
         marker[0] = mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_freecycle)));
+
+        rg_category.check(chair.getId());
 
         mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
@@ -176,7 +189,7 @@ public class FreeCycleFragment extends Fragment {
                                 if (!str.equals("")) {
                                     freecycle.put("startDate", startDate.getText().toString());
                                 } else {
-                                    freecycle.put("minCoffee", "-");
+                                    freecycle.put("startDate", "-");
                                 }
 
                                 str = endDate.getText().toString();
@@ -186,39 +199,16 @@ public class FreeCycleFragment extends Fragment {
                                     freecycle.put("endDate", "-");
                                 }
 
-//                                str = minFoodScrape.getText().toString();
-//                                if (!str.equals("")) {
-//                                    foodscrape.put("minFoodScrape", minFoodScrape.getText().toString());
-//                                } else {
-//                                    foodscrape.put("minFoodScrape", "-");
-//                                }
-//
-//                                str = priceFoodScrape.getText().toString();
-//                                if (!str.equals("")) {
-//                                    foodscrape.put("priceFoodScrape", priceFoodScrape.getText().toString());
-//                                } else {
-//                                    foodscrape.put("priceFoodScrape", "-");
-//                                }
-//
-//                                str = minCookingOil.getText().toString();
-//                                if (!str.equals("")) {
-//                                    foodscrape.put("minCookingOil", minCookingOil.getText().toString());
-//                                } else {
-//                                    foodscrape.put("minCookingOil", "-");
-//                                }
-//
-//                                str = priceCookingOil.getText().toString();
-//                                if (!str.equals("")) {
-//                                    foodscrape.put("priceCookingOil", priceCookingOil.getText().toString());
-//                                } else {
-//                                    foodscrape.put("priceCookingOil", "-");
-//                                }
 
-                                str = others.getText().toString();
-                                if (!str.equals("")) {
-                                    freecycle.put("others", others.getText().toString());
-                                } else {
-                                    freecycle.put("others", "-");
+//                                RadioGroup rg1 = (RadioGroup) this.findViewById(R.id.);
+                                if(rg_category.getCheckedRadioButtonId()!=-1){
+                                    int id= rg_category.getCheckedRadioButtonId();
+                                    View radioButton = rg_category.findViewById(id);
+                                    int radioId = rg_category.indexOfChild(radioButton);
+                                    RadioButton btn = (RadioButton) rg_category.getChildAt(radioId);
+                                    String selection = (String) btn.getText();
+                                    //Log.i("Radio >>>>>>>>>>", selection);
+                                    freecycle.put("category", selection);
                                 }
 
 

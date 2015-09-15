@@ -144,7 +144,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/telephone"
+                android:id="@+id/show_telephone"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -197,39 +197,15 @@
                 android:textSize="20dp" />
 
             <TextView
+                android:id="@+id/show_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="- Concrete"
+                android:text=" "
                 android:layout_marginLeft="65dp"
                 />
-
-
-
-
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageButton4"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="- Sand"
-                android:layout_marginLeft="145dp"
-                />
-
-
-
-
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

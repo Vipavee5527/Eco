@@ -43,6 +43,7 @@ public class ShowLandfill extends Fragment {
     CheckBox stone;
     CheckBox other;
     TextView otherSpecify;
+    TextView show_category;
 
 
     @Override
@@ -61,11 +62,50 @@ public class ShowLandfill extends Fragment {
         landmark = (TextView) v.findViewById(R.id.nearby);
         startDate = (TextView) v.findViewById(R.id.startDate);
         endDate = (TextView) v.findViewById(R.id.finishDate);
+        show_category = (TextView) v.findViewById(R.id.show_category);
 //        CheckBox concrete;
 //        CheckBox sand;
 //        CheckBox stone;
 //        CheckBox other;
-        otherSpecify = (TextView) v.findViewById(R.id.other_specify);
+       // otherSpecify = (TextView) v.findViewById(R.id.other_specify);
+
+
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Landfill");
+        query2.whereEqualTo("shopID",sID);
+        query2.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> scoreList, ParseException e) {
+                if (e == null) {
+                    Log.i(">>>>>>>>>>>>>>>>>>>>>", "Retrieved " + scoreList.size() + " scores"); // Get List size
+                    for (ParseObject dealsObject : scoreList) {
+                        // use dealsObject.get('columnName') to access the properties of the Deals object.
+                        startDate.setText(dealsObject.get("startDate").toString());
+                        endDate.setText(dealsObject.get("endDate").toString());
+
+                        String show = "";
+
+                        if ((boolean)dealsObject.get("concrete")) {
+                            show += "Concrete, ";
+                        }
+
+                        if ((boolean)dealsObject.get("sand")) {
+                            show += "Sand, ";
+                        }
+
+                        if ((boolean)dealsObject.get("stone")) {
+                            show += "Stone";
+                        }
+
+                        if ((boolean)dealsObject.get("other")) {
+                            show += ", " + dealsObject.get("otherSpecify").toString();
+                        }
+                        show_category.setText(show);
+                    }
+
+                } else {
+                    Log.i("score", "Error: " + e.getMessage());
+                }
+            }
+        });
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Shop");

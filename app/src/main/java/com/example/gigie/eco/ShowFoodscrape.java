@@ -81,7 +81,7 @@ public class ShowFoodscrape extends Fragment {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.
                         minCoffee.setText(dealsObject.get("minCoffee").toString() + " THB./kg.");
                         priceCoffee.setText(dealsObject.get("priceCoffee").toString() + " THB./kg.");
-                        minFoodScrape.setText(dealsObject.get("minFooodScrape").toString() + " THB./kg.");
+                        minFoodScrape.setText(dealsObject.get("minFoodScrape").toString() + " THB./kg.");
                         priceFoodScrape.setText(dealsObject.get("priceFoodScrape").toString() + " THB./kg.");
                         minCookingOil.setText(dealsObject.get("minCookingOil").toString());
                         priceCookingOil.setText(dealsObject.get("priceCookingOil").toString() + " THB./kg.");

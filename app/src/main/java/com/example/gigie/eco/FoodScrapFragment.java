@@ -219,6 +219,12 @@ public class FoodScrapFragment extends Fragment {
                                     foodscrape.put("minFoodScrapeOther", "-");
                                 }
 
+                                str = priceFoodScrapeOther.getText().toString();
+                                if (!str.equals("")) {
+                                    foodscrape.put("priceFoodScrapeOther", priceFoodScrapeOther.getText().toString());
+                                } else {
+                                    foodscrape.put("priceFoodScrapeOther", "-");
+                                }
 
                                 foodscrape.saveInBackground();
                                 ShowFoodscrape showFoodscrape = new ShowFoodscrape();

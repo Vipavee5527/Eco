@@ -35,7 +35,8 @@ public class SearchFragment extends Fragment {
         final EditText edit_search = (EditText) v.findViewById(R.id.edit_search);
         final ListView list_search = (ListView) v.findViewById(R.id.list_search);
 
-        search(edit_search, list_search);
+
+        //search(edit_search, list_search);
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +47,7 @@ public class SearchFragment extends Fragment {
         return v;
     }
 
-    public void search( EditText edit_search, final ListView list_search) {
+    public void search(EditText edit_search, final ListView list_search) {
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Shop");
         if (!edit_search.getText().toString().equals("")) {
             query2.whereMatches("shopName", edit_search.getText().toString() + "+");
@@ -57,7 +58,7 @@ public class SearchFragment extends Fragment {
                     Log.i(">>>>>>>>>>>>>>>>>>>>>", "Retrieved " + scoreList.size() + " scores"); // Get List size
 
                     final String[] shopname = new String[scoreList.size()];
-                    String[] type = new String[scoreList.size()];
+                    final String[] type = new String[scoreList.size()];
                     final int[] sID = new int[scoreList.size()];
 
                     int i = 0;
@@ -72,21 +73,55 @@ public class SearchFragment extends Fragment {
                     CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
                     list_search.setAdapter(adapter);
 
+
                     list_search.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                            ShowRecycleShop showRecycleShop = new ShowRecycleShop();
-                            FragmentManager fm = getFragmentManager();
-                            FragmentTransaction transaction = fm.beginTransaction();
-                            Bundle args = new Bundle();
-                            args.putInt("sID", sID[position]);
-                            showRecycleShop.setArguments(args);
-                            transaction.replace(R.id.fragment_container, showRecycleShop);
-                            transaction.addToBackStack(null);
-                            transaction.commit();
+
+                            if(type[position].equals("recycle")) {
+                                ShowRecycleShop showRecycleShop = new ShowRecycleShop();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", sID[position]);
+                                showRecycleShop.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showRecycleShop);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
+
+                            if(type[position].equals("foodscrape")){
+                                ShowFoodscrape showFoodscrape = new ShowFoodscrape();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", sID[position]);
+                                showFoodscrape.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showFoodscrape);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
+
+                            if(type[position].equals("landfill")){
+                                ShowLandfill showLandfill = new ShowLandfill();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", sID[position]);
+                                showLandfill.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showLandfill);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
+
+
                         }
                     });
+
 
                 } else {
                     Log.i("SSS", "Error: " + e.getMessage());
