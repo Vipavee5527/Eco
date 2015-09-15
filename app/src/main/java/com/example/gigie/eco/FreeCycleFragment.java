@@ -1,5 +1,7 @@
 package com.example.gigie.eco;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,9 +25,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 /**
@@ -55,7 +59,7 @@ public class FreeCycleFragment extends Fragment {
 
     RadioGroup rg_category;
 
-
+    private int PICK_IMAGE_REQUEST = 1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_freecycle, null, false);
@@ -76,14 +80,41 @@ public class FreeCycleFragment extends Fragment {
 
 
         startDate = (EditText) v.findViewById(R.id.startDate);
-        endDate = (EditText)v.findViewById(R.id.finishDate);
+        endDate = (EditText) v.findViewById(R.id.finishDate);
 
         rg_category = (RadioGroup) v.findViewById(R.id.radioGroup_cat);
 
+        imageTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+         ////////////////////////////
+                // Locate the image in res > drawable-hdpi
+                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_pause_light);
+                // Convert it to byte
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                // Compress image to lower quality scale 1 - 100
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] image = stream.toByteArray();
 
+                // Create the ParseFile
+                ParseFile file = new ParseFile("androidbegin.png", image);
+                // Upload the image into Parse Cloud
+                file.saveInBackground();
 
+                // Create a New Class called "ImageUpload" in Parse
+                ParseObject imgupload = new ParseObject("ImageUpload");
 
+                // Create a column named "ImageName" and set the string
+                imgupload.put("ImageName", "AndroidBegin Logo");
 
+                // Create a column named "ImageFile" and insert the image
+                imgupload.put("ImageFile", file);
+
+                // Create the class and the columns
+                imgupload.saveInBackground();
+
+            }
+        });
 
 
         final Marker[] marker = new Marker[1];
@@ -201,8 +232,8 @@ public class FreeCycleFragment extends Fragment {
 
 
 //                                RadioGroup rg1 = (RadioGroup) this.findViewById(R.id.);
-                                if(rg_category.getCheckedRadioButtonId()!=-1){
-                                    int id= rg_category.getCheckedRadioButtonId();
+                                if (rg_category.getCheckedRadioButtonId() != -1) {
+                                    int id = rg_category.getCheckedRadioButtonId();
                                     View radioButton = rg_category.findViewById(id);
                                     int radioId = rg_category.indexOfChild(radioButton);
                                     RadioButton btn = (RadioButton) rg_category.getChildAt(radioId);
@@ -239,4 +270,6 @@ public class FreeCycleFragment extends Fragment {
         return v;
 
     }
+
+
 }
