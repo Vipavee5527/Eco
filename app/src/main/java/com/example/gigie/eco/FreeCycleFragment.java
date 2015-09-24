@@ -1,8 +1,10 @@
 package com.example.gigie.eco;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore.Images.Media;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,11 +27,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
-import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -60,6 +62,8 @@ public class FreeCycleFragment extends Fragment {
     RadioGroup rg_category;
 
     private int PICK_IMAGE_REQUEST = 1;
+    public static final int REQUEST_GALLERY = 1;
+    Bitmap bitmap;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_freecycle, null, false);
@@ -87,7 +91,8 @@ public class FreeCycleFragment extends Fragment {
         imageTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-         ////////////////////////////
+
+                /*
                 // Locate the image in res > drawable-hdpi
                 Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_pause_light);
                 // Convert it to byte
@@ -112,7 +117,11 @@ public class FreeCycleFragment extends Fragment {
 
                 // Create the class and the columns
                 imgupload.saveInBackground();
-
+                */
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent
+                        , "Select photo from"), REQUEST_GALLERY);
             }
         });
 
@@ -270,6 +279,24 @@ public class FreeCycleFragment extends Fragment {
         return v;
 
     }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("image","requestCode : "+requestCode + " resultCode : "+resultCode);
+        if (requestCode == REQUEST_GALLERY) {
+            Uri uri = data.getData();
+            try {
+                bitmap = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+
+
+                imageTop.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 
 }
