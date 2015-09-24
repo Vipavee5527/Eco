@@ -120,7 +120,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
+// food scrape
         btn_foodscrape.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -269,7 +269,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 mMap.clear();
                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Shop");
-                query.whereContains("type", "landfill");
+                query.whereContains("type", "freecycle");
                 //query.whereMatches("shopName", "o+");
                 query.findInBackground(new FindCallback<ParseObject>() {
                     public void done(List<ParseObject> scoreList, ParseException e) {
@@ -300,13 +300,13 @@ public class HomeFragment extends Fragment {
                                                         // use dealsObject.get('columnName') to access the properties of the Deals object.
 
 
-                                                        ShowLandfill showLandfill = new ShowLandfill();
+                                                        ShowFreecycle showFreecycle = new ShowFreecycle();
                                                         FragmentManager fm = getFragmentManager();
                                                         FragmentTransaction transaction = fm.beginTransaction();
                                                         Bundle args = new Bundle();
                                                         args.putInt("sID", (int) dealsObject.get("shopID"));
-                                                        showLandfill.setArguments(args);
-                                                        transaction.replace(R.id.fragment_container, showLandfill);
+                                                        showFreecycle.setArguments(args);
+                                                        transaction.replace(R.id.fragment_container, showFreecycle);
                                                         transaction.addToBackStack(null);
                                                         transaction.commit();
 
