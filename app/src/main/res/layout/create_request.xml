@@ -1,6 +1,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/scrollview_request">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -103,7 +104,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="Contact number"
+                    android:text="Contact name"
                     android:textSize="20dp" />
 
                 <EditText
@@ -146,6 +147,7 @@
                 android:layout_marginLeft="10dp"
                 android:orientation="horizontal">
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -160,18 +162,12 @@
                     android:text=" (not required)"
                     android:textSize="13dp" />
 
-                <CheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp" />
 
                 <EditText
                     android:id="@+id/specify"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="-4dp"
+                    android:layout_marginLeft="2dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="14dp"
                     android:hint="Please specify"

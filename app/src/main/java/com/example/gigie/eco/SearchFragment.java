@@ -117,6 +117,18 @@ public class SearchFragment extends Fragment {
                                 transaction.commit();
 
                             }
+                            if(type[position].equals("freecycle")){
+                                ShowFreecycle showFreecycle = new ShowFreecycle();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", sID[position]);
+                                showFreecycle.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showFreecycle);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
 
 
                         }
