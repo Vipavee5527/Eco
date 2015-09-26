@@ -67,12 +67,15 @@ public class FreeCycleFragment extends Fragment {
 
     private int PICK_IMAGE_REQUEST = 1;
     public static final int REQUEST_GALLERY = 1;
-    public static final int REQUEST_GALLERY1 = 1;
-    public static final int REQUEST_GALLERY2 = 1;
-    public static final int REQUEST_GALLERY3 = 1;
+    public static final int REQUEST_GALLERY1 = 2;
+    public static final int REQUEST_GALLERY2 = 3;
+    public static final int REQUEST_GALLERY3 = 4;
 
 
-    Bitmap bitmap;
+    Bitmap bitmap1;
+    Bitmap bitmap2;
+    Bitmap bitmap3;
+    Bitmap bitmap4;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_freecycle, null, false);
@@ -326,12 +329,16 @@ public class FreeCycleFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("image","requestCode : "+requestCode + " resultCode : "+resultCode);
         if (requestCode == REQUEST_GALLERY) {
+            if (data==null)
+                Log.e("dataNull","null 1");
+            else
+                Log.e("dataNull","not null 1");
             Uri uri = data.getData();
             try {
-                bitmap = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+                bitmap1 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
 
 
-                imageTop.setImageBitmap(bitmap);
+                imageTop.setImageBitmap(bitmap1);
             }
             catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -339,30 +346,17 @@ public class FreeCycleFragment extends Fragment {
                 e.printStackTrace();
             }
         }
-        if (requestCode == REQUEST_GALLERY1) {
+        else if (requestCode == REQUEST_GALLERY1) {
+            if (data==null)
+                Log.e("dataNull","null 2");
+            else
+                Log.e("dataNull","not null 2");
             Uri uri = data.getData();
             try {
-                bitmap = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+                bitmap2 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
 
 
-                imageLeft.setImageBitmap(bitmap);
-            }
-            catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-
-        if (requestCode == REQUEST_GALLERY2) {
-            Uri uri = data.getData();
-            try {
-                bitmap = Media.getBitmap(this.getActivity().getContentResolver(), uri);
-
-
-                imageCenter.setImageBitmap(bitmap);
+                imageLeft.setImageBitmap(bitmap2);
             }
             catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -371,13 +365,19 @@ public class FreeCycleFragment extends Fragment {
             }
         }
 
-        if (requestCode == REQUEST_GALLERY3) {
+
+
+        else if (requestCode == REQUEST_GALLERY2) {
+            if (data==null)
+                Log.e("dataNull","null 3");
+            else
+                Log.e("dataNull","not null 3");
             Uri uri = data.getData();
             try {
-                bitmap = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+                bitmap3 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
 
 
-                imageRight.setImageBitmap(bitmap);
+                imageCenter.setImageBitmap(bitmap3);
             }
             catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -385,6 +385,26 @@ public class FreeCycleFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+
+        else if (requestCode == REQUEST_GALLERY3) {
+            if (data==null)
+                Log.e("dataNull","null 4");
+            else
+                Log.e("dataNull","not null 4");
+            Uri uri = data.getData();
+            try {
+                bitmap4 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+
+
+                imageRight.setImageBitmap(bitmap4);
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
 
 
 
