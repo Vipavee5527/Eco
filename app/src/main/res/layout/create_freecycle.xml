@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".CreateFreecycleActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,7 +26,10 @@
             android:layout_below="@+id/linearLayout"
             android:layout_gravity="center"
             android:layout_toLeftOf="@+id/imageButton2"
-            android:src="@drawable/addphoto" />
+            android:src="@drawable/addphoto"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -46,7 +50,9 @@
                 android:layout_below="@+id/imageButton"
                 android:layout_gravity="center|right"
                 android:layout_weight="0.3333333"
-                android:src="@drawable/plusphoto" />
+                android:src="@drawable/plusphoto"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -56,7 +62,9 @@
                 android:layout_below="@+id/imageButton2"
                 android:layout_gravity="center|right"
                 android:layout_weight="0.3333333"
-                android:src="@drawable/plusphoto" />
+                android:src="@drawable/plusphoto"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
 
             <ImageButton
                 android:id="@+id/imageButton2"
@@ -67,7 +75,9 @@
                 android:layout_below="@+id/linearLayout"
                 android:layout_gravity="center|right"
                 android:layout_weight="0.3333333"
-                android:src="@drawable/plusphoto" />
+                android:src="@drawable/plusphoto"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"/>
         </LinearLayout>
 
         <LinearLayout

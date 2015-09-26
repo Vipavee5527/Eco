@@ -43,6 +43,9 @@ public class FreeCycleFragment extends Fragment {
     ScrollView mScrollView;
 
     ImageButton imageTop;
+    ImageButton imageLeft;
+    ImageButton imageCenter;
+    ImageButton imageRight;
 
 
     EditText shopName;
@@ -59,16 +62,25 @@ public class FreeCycleFragment extends Fragment {
     EditText startDate;
     EditText endDate;
 
+
     RadioGroup rg_category;
 
     private int PICK_IMAGE_REQUEST = 1;
     public static final int REQUEST_GALLERY = 1;
+    public static final int REQUEST_GALLERY1 = 1;
+    public static final int REQUEST_GALLERY2 = 1;
+    public static final int REQUEST_GALLERY3 = 1;
+
+
     Bitmap bitmap;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_freecycle, null, false);
 
         imageTop = (ImageButton) v.findViewById(R.id.imageButton4);
+        imageLeft = (ImageButton) v.findViewById(R.id.imageButton3);
+        imageCenter = (ImageButton) v.findViewById(R.id.imageButton);
+        imageRight = (ImageButton) v.findViewById(R.id.imageButton2);
 
         mScrollView = (ScrollView) v.findViewById(R.id.scrollview_freecycle);
         mMap = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map_pick)).getMap();
@@ -122,6 +134,37 @@ public class FreeCycleFragment extends Fragment {
                 intent.setType("image/*");
                 startActivityForResult(Intent.createChooser(intent
                         , "Select photo from"), REQUEST_GALLERY);
+            }
+        });
+
+        imageLeft.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent
+                        , "Select photo from"), REQUEST_GALLERY1);
+            }
+        });
+
+
+        imageCenter.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent
+                        , "Select photo from"), REQUEST_GALLERY2);
+            }
+        });
+
+        imageRight.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent
+                        , "Select photo from"), REQUEST_GALLERY3);
             }
         });
 
@@ -289,12 +332,62 @@ public class FreeCycleFragment extends Fragment {
 
 
                 imageTop.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        if (requestCode == REQUEST_GALLERY1) {
+            Uri uri = data.getData();
+            try {
+                bitmap = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+
+
+                imageLeft.setImageBitmap(bitmap);
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
+        if (requestCode == REQUEST_GALLERY2) {
+            Uri uri = data.getData();
+            try {
+                bitmap = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+
+
+                imageCenter.setImageBitmap(bitmap);
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (requestCode == REQUEST_GALLERY3) {
+            Uri uri = data.getData();
+            try {
+                bitmap = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+
+
+                imageRight.setImageBitmap(bitmap);
+            }
+            catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+
     }
 
 
