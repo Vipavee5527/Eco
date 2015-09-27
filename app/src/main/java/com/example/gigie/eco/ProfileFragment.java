@@ -75,9 +75,6 @@ public class ProfileFragment extends Fragment {
         userNameView = (TextView) v.findViewById(R.id.displayname);
 
 
-
-
-
         //Fetch Facebook user info if it is logged
         ParseUser currentUser = ParseUser.getCurrentUser();
         if ((currentUser != null) && currentUser.isAuthenticated()) {
@@ -122,15 +119,67 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                            ShowRecycleShop showRecycleShop = new ShowRecycleShop();
-                            FragmentManager fm = getFragmentManager();
-                            FragmentTransaction transaction = fm.beginTransaction();
-                            Bundle args = new Bundle();
-                            args.putInt("sID", sID[position]);
-                            showRecycleShop.setArguments(args);
-                            transaction.replace(R.id.fragment_container, showRecycleShop);
-                            transaction.addToBackStack(null);
-                            transaction.commit();
+//                            ShowRecycleShop showRecycleShop = new ShowRecycleShop();
+//                            FragmentManager fm = getFragmentManager();
+//                            FragmentTransaction transaction = fm.beginTransaction();
+//                            Bundle args = new Bundle();
+//                            args.putInt("sID", sID[position]);
+//                            showRecycleShop.setArguments(args);
+//                            transaction.replace(R.id.fragment_container, showRecycleShop);
+//                            transaction.addToBackStack(null);
+//                            transaction.commit();
+
+                            if(type[position].equals("recycle")) {
+                                ShowRecycleShop showRecycleShop = new ShowRecycleShop();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", sID[position]);
+                                showRecycleShop.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showRecycleShop);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
+
+                            if(type[position].equals("foodscrape")){
+                                ShowFoodscrape showFoodscrape = new ShowFoodscrape();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", sID[position]);
+                                showFoodscrape.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showFoodscrape);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
+
+                            if(type[position].equals("landfill")){
+                                ShowLandfill showLandfill = new ShowLandfill();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", sID[position]);
+                                showLandfill.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showLandfill);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
+                            if(type[position].equals("freecycle")){
+                                ShowFreecycle showFreecycle = new ShowFreecycle();
+                                FragmentManager fm = getFragmentManager();
+                                FragmentTransaction transaction = fm.beginTransaction();
+                                Bundle args = new Bundle();
+                                args.putInt("sID", sID[position]);
+                                showFreecycle.setArguments(args);
+                                transaction.replace(R.id.fragment_container, showFreecycle);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+
+                            }
+
                         }
                     });
                 } else {
@@ -168,24 +217,24 @@ public class ProfileFragment extends Fragment {
                         i++;
                     }
 
-                    CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
+                    CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), title, description);
                     listView.setAdapter(adapter);
-//
-//                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                            ShowRecycleShop showRecycleShop = new ShowRecycleShop();
-//                            FragmentManager fm = getFragmentManager();
-//                            FragmentTransaction transaction = fm.beginTransaction();
-//                            Bundle args = new Bundle();
-//                            args.putInt("rID", rID[position]);
-//                            showRecycleShop.setArguments(args);
-//                            transaction.replace(R.id.fragment_container, showRecycleShop);
-//                            transaction.addToBackStack(null);
-//                            transaction.commit();
-//                        }
-//                    });
+
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            ShowRequest showRequest = new ShowRequest();
+                            FragmentManager fm = getFragmentManager();
+                            FragmentTransaction transaction = fm.beginTransaction();
+                            Bundle args = new Bundle();
+                            //args.putInt("rID", rID[position]);
+                            showRequest.setArguments(args);
+                            transaction.replace(R.id.fragment_container, showRequest);
+                            transaction.addToBackStack(null);
+                            transaction.commit();
+                        }
+                    });
                 } else {
                     Log.i("score", "Error: " + e.getMessage());
                 }
@@ -218,8 +267,6 @@ public class ProfileFragment extends Fragment {
                 listView.setAdapter(adapter);
             }
         });
-
-
 
 
         return v;
@@ -374,9 +421,6 @@ public class ProfileFragment extends Fragment {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
-
-
-
 
 
 }
