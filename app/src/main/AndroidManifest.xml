@@ -21,7 +21,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- uses-permission android:name="com.google.android.providers.gsf.permissiom.READ_GSERVICES"/ -->
     <application android:name=".EcoSpot" >
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher.png"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity android:name="com.facebook.FacebookActivity"
@@ -29,10 +29,10 @@
             />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:icon="@drawable/ic_launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
