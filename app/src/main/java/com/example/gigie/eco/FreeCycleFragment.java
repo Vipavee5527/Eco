@@ -2,6 +2,7 @@ package com.example.gigie.eco;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore.Images.Media;
@@ -76,6 +77,7 @@ public class FreeCycleFragment extends Fragment {
     Bitmap bitmap2;
     Bitmap bitmap3;
     Bitmap bitmap4;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_freecycle, null, false);
@@ -135,37 +137,41 @@ public class FreeCycleFragment extends Fragment {
                 */
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(Intent.createChooser(intent
                         , "Select photo from"), REQUEST_GALLERY);
             }
         });
 
-        imageLeft.setOnClickListener(new View.OnClickListener(){
+        imageLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(Intent.createChooser(intent
                         , "Select photo from"), REQUEST_GALLERY1);
             }
         });
 
 
-        imageCenter.setOnClickListener(new View.OnClickListener(){
+        imageCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(Intent.createChooser(intent
                         , "Select photo from"), REQUEST_GALLERY2);
             }
         });
 
-        imageRight.setOnClickListener(new View.OnClickListener(){
+        imageRight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
                 startActivityForResult(Intent.createChooser(intent
                         , "Select photo from"), REQUEST_GALLERY3);
             }
@@ -326,90 +332,111 @@ public class FreeCycleFragment extends Fragment {
 
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("image","requestCode : "+requestCode + " resultCode : "+resultCode);
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("image", "requestCode : " + requestCode + " resultCode : " + resultCode);
+
         if (requestCode == REQUEST_GALLERY) {
-            if (data==null)
-                Log.e("dataNull","null 1");
+            if (data == null)
+                Log.e("dataNull", "null 1");
             else
-                Log.e("dataNull","not null 1");
+                Log.e("dataNull", "not null 1");
             Uri uri = data.getData();
             try {
                 bitmap1 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
 
-
                 imageTop.setImageBitmap(bitmap1);
-            }
-            catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+
         else if (requestCode == REQUEST_GALLERY1) {
-            if (data==null)
-                Log.e("dataNull","null 2");
+            if (data == null)
+                Log.e("dataNull", "null 2");
             else
-                Log.e("dataNull","not null 2");
+                Log.e("dataNull", "not null 2");
             Uri uri = data.getData();
             try {
-                bitmap2 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
-
-
-                imageLeft.setImageBitmap(bitmap2);
+                //bitmap2 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+                //imageLeft.setImageBitmap(bitmap2);
+                imageLeft.setImageBitmap(decodeUri(uri));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            catch (FileNotFoundException e) {
+        } else if (requestCode == REQUEST_GALLERY2) {
+            if (data == null)
+                Log.e("dataNull", "null 3");
+            else
+                Log.e("dataNull", "not null 3");
+            Uri uri = data.getData();
+            try {
+                //bitmap3 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+                //imageCenter.setImageBitmap(bitmap3);
+                imageCenter.setImageBitmap(decodeUri(uri));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (requestCode == REQUEST_GALLERY3) {
+            if (data == null)
+                Log.e("dataNull", "null 4");
+            else
+                Log.e("dataNull", "not null 4");
+            Uri uri = data.getData();
+            try {
+                //bitmap4 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+
+
+                //imageRight.setImageBitmap(bitmap4);
+                imageRight.setImageBitmap(decodeUri(uri));
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
-
-
-        else if (requestCode == REQUEST_GALLERY2) {
-            if (data==null)
-                Log.e("dataNull","null 3");
-            else
-                Log.e("dataNull","not null 3");
-            Uri uri = data.getData();
-            try {
-                bitmap3 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
-
-
-                imageCenter.setImageBitmap(bitmap3);
-            }
-            catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        else if (requestCode == REQUEST_GALLERY3) {
-            if (data==null)
-                Log.e("dataNull","null 4");
-            else
-                Log.e("dataNull","not null 4");
-            Uri uri = data.getData();
-            try {
-                bitmap4 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
-
-
-                imageRight.setImageBitmap(bitmap4);
-            }
-            catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
 
 
     }
 
+    private Bitmap decodeUri(Uri uri) throws FileNotFoundException {
+
+        //decode image
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(
+                getActivity().getContentResolver().openInputStream(uri), null, o);
+
+        // the size we want to scale to
+        final int REQUIRED_SIZE = 100;
+
+        //find the correct scale value. It should be the power of 2
+
+        int width_tmp = o.outWidth, height_tmp = o.outHeight;
+        int scale = 1;
+        while (true) {
+            if (width_tmp / 2 < REQUIRED_SIZE || height_tmp / 2 < REQUIRED_SIZE) {
+                break;
+            }
+            width_tmp /= 2;
+            height_tmp /= 2;
+            scale *= 2;
+        }
+
+        //decode with inSampleSize
+
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        return BitmapFactory.decodeStream(
+                getActivity().getContentResolver().openInputStream(uri), null, o2);
+    }
 
 
 }
