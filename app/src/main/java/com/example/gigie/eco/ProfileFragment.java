@@ -188,6 +188,14 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
+                listView.setAdapter(adapter);
+            }
+        });
+
 
 //        >>>SELECT by condition
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Request");
@@ -225,14 +233,14 @@ public class ProfileFragment extends Fragment {
                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                             ShowRequest showRequest = new ShowRequest();
-                            FragmentManager fm = getFragmentManager();
-                            FragmentTransaction transaction = fm.beginTransaction();
-                            Bundle args = new Bundle();
+                            FragmentManager fm1 = getFragmentManager();
+                            FragmentTransaction transaction1 = fm1.beginTransaction();
+                            Bundle args1 = new Bundle();
                             //args.putInt("rID", rID[position]);
-                            showRequest.setArguments(args);
-                            transaction.replace(R.id.fragment_container, showRequest);
-                            transaction.addToBackStack(null);
-                            transaction.commit();
+                            showRequest.setArguments(args1);
+                            transaction1.replace(R.id.fragment_container, showRequest);
+                            transaction1.addToBackStack(null);
+                            transaction1.commit();
                         }
                     });
                 } else {
@@ -241,14 +249,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
-        shop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
-                listView.setAdapter(adapter);
-            }
-        });
 
 
 //        favorite.setOnClickListener(new View.OnClickListener() {

@@ -40,10 +40,6 @@ public class AddRequestFragment extends Fragment {
     ScrollView mScrollView;
 
 
-
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_request, null, false);
@@ -182,8 +178,6 @@ public class AddRequestFragment extends Fragment {
                                 }
 
 
-
-//
 
                                 request.saveInBackground();
 

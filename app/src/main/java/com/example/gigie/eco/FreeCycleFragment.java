@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
@@ -27,9 +28,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -54,13 +57,14 @@ public class FreeCycleFragment extends Fragment {
     EditText telephone;
     EditText landmark;
     RadioButton chair;
-//    RadioButton table;
-//    RadioButton bed;
-//    RadioButton book;
-//    RadioButton clothes;
-//    RadioButton others;
     EditText startDate;
     EditText endDate;
+
+    private Uri tmpUri;
+    private Uri tmpUri1;
+    private Uri tmpUri2;
+    private Uri tmpUri3;
+
 
 
     RadioGroup rg_category;
@@ -77,6 +81,11 @@ public class FreeCycleFragment extends Fragment {
     Bitmap bitmap3;
     Bitmap bitmap4;
 
+    ImageView image1;
+    ImageView image2;
+    ImageView image3;
+    ImageView Image4;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_freecycle, null, false);
@@ -85,6 +94,8 @@ public class FreeCycleFragment extends Fragment {
         imageLeft = (ImageButton) v.findViewById(R.id.imageButton3);
         imageCenter = (ImageButton) v.findViewById(R.id.imageButton);
         imageRight = (ImageButton) v.findViewById(R.id.imageButton2);
+
+
 
         mScrollView = (ScrollView) v.findViewById(R.id.scrollview_freecycle);
         mMap = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map_pick)).getMap();
@@ -108,32 +119,32 @@ public class FreeCycleFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                /*
-                // Locate the image in res > drawable-hdpi
-                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_pause_light);
-                // Convert it to byte
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                // Compress image to lower quality scale 1 - 100
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] image = stream.toByteArray();
 
-                // Create the ParseFile
-                ParseFile file = new ParseFile("androidbegin.png", image);
-                // Upload the image into Parse Cloud
-                file.saveInBackground();
+//                // Locate the image in res > drawable-hdpi
+//                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_pause_light);
+//                // Convert it to byte
+//                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                // Compress image to lower quality scale 1 - 100
+//                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                byte[] image = stream.toByteArray();
+//
+//                // Create the ParseFile
+//                ParseFile file = new ParseFile("androidbegin.png", image);
+//                // Upload the image into Parse Cloud
+//                file.saveInBackground();
+//
+//                // Create a New Class called "ImageUpload" in Parse
+//                ParseObject imgupload = new ParseObject("ImageUpload");
+//
+//                // Create a column named "ImageName" and set the string
+//                imgupload.put("ImageName", "AndroidBegin Logo");
+//
+//                // Create a column named "ImageFile" and insert the image
+//                imgupload.put("ImageFile", file);
+//
+//                // Create the class and the columns
+//                imgupload.saveInBackground();
 
-                // Create a New Class called "ImageUpload" in Parse
-                ParseObject imgupload = new ParseObject("ImageUpload");
-
-                // Create a column named "ImageName" and set the string
-                imgupload.put("ImageName", "AndroidBegin Logo");
-
-                // Create a column named "ImageFile" and insert the image
-                imgupload.put("ImageFile", file);
-
-                // Create the class and the columns
-                imgupload.saveInBackground();
-                */
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
                 intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
@@ -221,6 +232,7 @@ public class FreeCycleFragment extends Fragment {
                             Log.i("ShopID", "Retrieved " + scoreList.size() + " scores"); // Get List size
                             for (ParseObject dealsObject : scoreList) {
                                 // use dealsObject.get('columnName') to access the properties of the Deals object.
+
                                 ParseObject freecycle = new ParseObject("Freecycle");
                                 ParseObject shop = new ParseObject("Shop");
 
@@ -302,32 +314,74 @@ public class FreeCycleFragment extends Fragment {
                                     freecycle.put("category", selection);
                                 }
 
-//                                // Locate the image in res > drawable-hdpi
-//                                //Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_pause_light);
-//                                Bitmap bitmap = BitmapFactory.decodeFile("picturePath");
-//                                // Convert it to byte
-//                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//                                // Compress image to lower quality scale 1 - 100
-//                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//                                byte[] image = stream.toByteArray();
-//
-//
-//                                // Create the ParseFile
-//                                ParseFile file = new ParseFile("picturePath", image);
-//                                // Upload the image into Parse Cloud
-//                                file.saveInBackground();
-//
-//                                // Create a New Class called "ImageUpload" in Parse
-//                                ParseObject imgupload = new ParseObject("ImageUpload");
-//
-//                                // Create a column named "ImageName" and set the string
-//                                imgupload.put("ImageName", "picturePath");
-//
-//                                // Create a column named "ImageFile" and insert the image
-//                                imgupload.put("ImageFile", file);
-//
-//                                // Create the class and the columns
-//                                imgupload.saveInBackground();
+
+                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                // Compress image to lower quality scale 1 - 100
+                                try {
+                                    decodeUri(tmpUri).compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                }
+                                byte[] image = stream.toByteArray();
+
+                                ParseFile file = new ParseFile("TEST.png", image);
+                                // Upload the image into Parse Cloud
+                                file.saveInBackground();
+
+                                freecycle.put("ImageFileTop", file);
+
+
+                                ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
+                                // Compress image to lower quality scale 1 - 100
+                                try {
+                                    decodeUri(tmpUri1).compress(Bitmap.CompressFormat.PNG, 100, stream1);
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                }
+                                byte[] image1 = stream1.toByteArray();
+
+                                ParseFile file1 = new ParseFile("TEST1.png", image1);
+                                // Upload the image into Parse Cloud
+                                file1.saveInBackground();
+
+                                // Create a column named "ImageFile" and insert the image
+                                freecycle.put("ImageFileLeft", file1);
+
+
+                                ByteArrayOutputStream stream2 = new ByteArrayOutputStream();
+                                // Compress image to lower quality scale 1 - 100
+                                try {
+                                    decodeUri(tmpUri2).compress(Bitmap.CompressFormat.PNG, 100, stream2);
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                }
+                                byte[] image2 = stream2.toByteArray();
+
+                                ParseFile file2 = new ParseFile("TEST2.png", image2);
+                                // Upload the image into Parse Cloud
+                                file2.saveInBackground();
+
+                                // Create a column named "ImageFile" and insert the image
+                                freecycle.put("ImageFileCenter", file2);
+
+
+
+                                ByteArrayOutputStream stream3 = new ByteArrayOutputStream();
+                                // Compress image to lower quality scale 1 - 100
+                                try {
+                                    decodeUri(tmpUri3).compress(Bitmap.CompressFormat.PNG, 100, stream3);
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                }
+                                byte[] image3 = stream3.toByteArray();
+
+                                ParseFile file3 = new ParseFile("TEST3.png", image3);
+                                // Upload the image into Parse Cloud
+                                file3.saveInBackground();
+
+                                // Create a column named "ImageFile" and insert the image
+                                freecycle.put("ImageFileRight", file3);
+
 
 
 
@@ -370,25 +424,24 @@ public class FreeCycleFragment extends Fragment {
             else
                 Log.e("dataNull", "not null 1");
             Uri uri = data.getData();
+            tmpUri = uri;
             try {
 //                bitmap1 = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), uri);
 //
 //                imageTop.setImageBitmap(bitmap1);
-
                 imageTop.setImageBitmap(decodeUri2(uri));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-
-        else if (requestCode == REQUEST_GALLERY1) {
+        } else if (requestCode == REQUEST_GALLERY1) {
             if (data == null)
                 Log.e("dataNull", "null 2");
             else
                 Log.e("dataNull", "not null 2");
             Uri uri = data.getData();
+            tmpUri1 = uri;
             try {
                 //bitmap2 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
                 //imageLeft.setImageBitmap(bitmap2);
@@ -404,6 +457,8 @@ public class FreeCycleFragment extends Fragment {
             else
                 Log.e("dataNull", "not null 3");
             Uri uri = data.getData();
+            tmpUri2 = uri;
+
             try {
                 //bitmap3 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
                 //imageCenter.setImageBitmap(bitmap3);
@@ -419,6 +474,7 @@ public class FreeCycleFragment extends Fragment {
             else
                 Log.e("dataNull", "not null 4");
             Uri uri = data.getData();
+            tmpUri3 = uri;
             try {
                 //bitmap4 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
 
