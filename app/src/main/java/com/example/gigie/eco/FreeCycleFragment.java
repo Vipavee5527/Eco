@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore.Images.Media;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -303,6 +302,34 @@ public class FreeCycleFragment extends Fragment {
                                     freecycle.put("category", selection);
                                 }
 
+//                                // Locate the image in res > drawable-hdpi
+//                                //Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.ic_pause_light);
+//                                Bitmap bitmap = BitmapFactory.decodeFile("picturePath");
+//                                // Convert it to byte
+//                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                                // Compress image to lower quality scale 1 - 100
+//                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                                byte[] image = stream.toByteArray();
+//
+//
+//                                // Create the ParseFile
+//                                ParseFile file = new ParseFile("picturePath", image);
+//                                // Upload the image into Parse Cloud
+//                                file.saveInBackground();
+//
+//                                // Create a New Class called "ImageUpload" in Parse
+//                                ParseObject imgupload = new ParseObject("ImageUpload");
+//
+//                                // Create a column named "ImageName" and set the string
+//                                imgupload.put("ImageName", "picturePath");
+//
+//                                // Create a column named "ImageFile" and insert the image
+//                                imgupload.put("ImageFile", file);
+//
+//                                // Create the class and the columns
+//                                imgupload.saveInBackground();
+
+
 
                                 freecycle.saveInBackground();
 
@@ -344,9 +371,11 @@ public class FreeCycleFragment extends Fragment {
                 Log.e("dataNull", "not null 1");
             Uri uri = data.getData();
             try {
-                bitmap1 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
+//                bitmap1 = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), uri);
+//
+//                imageTop.setImageBitmap(bitmap1);
 
-                imageTop.setImageBitmap(bitmap1);
+                imageTop.setImageBitmap(decodeUri2(uri));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -438,5 +467,36 @@ public class FreeCycleFragment extends Fragment {
                 getActivity().getContentResolver().openInputStream(uri), null, o2);
     }
 
+    private Bitmap decodeUri2(Uri uri) throws FileNotFoundException {
+
+        //decode image
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inJustDecodeBounds = true;
+        BitmapFactory.decodeStream(
+                getActivity().getContentResolver().openInputStream(uri), null, o);
+
+        // the size we want to scale to
+        final int REQUIRED_SIZE = 500;
+
+        //find the correct scale value. It should be the power of 2
+
+        int width_tmp = o.outWidth, height_tmp = o.outHeight;
+        int scale = 1;
+        while (true) {
+            if (width_tmp / 2 < REQUIRED_SIZE || height_tmp / 2 < REQUIRED_SIZE) {
+                break;
+            }
+            width_tmp /= 2;
+            height_tmp /= 2;
+            scale *= 2;
+        }
+
+        //decode with inSampleSize
+
+        BitmapFactory.Options o2 = new BitmapFactory.Options();
+        o2.inSampleSize = scale;
+        return BitmapFactory.decodeStream(
+                getActivity().getContentResolver().openInputStream(uri), null, o2);
+    }
 
 }
