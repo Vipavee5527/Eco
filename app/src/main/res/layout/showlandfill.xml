@@ -9,12 +9,25 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Bang Mod Land"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text=" - "
+            android:textSize="40dp"
             android:id="@+id/show_shopName" />
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/imageButton4"
@@ -227,7 +240,7 @@
                 android:layout_marginLeft="35dp"
                 android:layout_marginTop="20dp"
                 android:ems="10"
-                android:text="11/05/58"
+                android:text="-"
                 />
 
             <TextView
@@ -245,7 +258,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
                 android:ems="10"
-                android:text="30/06/58"
+                android:text="-"
                 />
 
         </LinearLayout>

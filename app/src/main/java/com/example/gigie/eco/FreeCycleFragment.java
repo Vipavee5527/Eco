@@ -54,11 +54,11 @@ public class FreeCycleFragment extends Fragment {
     EditText telephone;
     EditText landmark;
     RadioButton chair;
-    RadioButton table;
-    RadioButton bed;
-    RadioButton book;
-    RadioButton clothes;
-    RadioButton others;
+//    RadioButton table;
+//    RadioButton bed;
+//    RadioButton book;
+//    RadioButton clothes;
+//    RadioButton others;
     EditText startDate;
     EditText endDate;
 

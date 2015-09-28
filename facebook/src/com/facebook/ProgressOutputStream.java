@@ -26,7 +26,6 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Map;
-
 class ProgressOutputStream extends FilterOutputStream implements RequestOutputStream {
     private final Map<GraphRequest, RequestProgress> progressMap;
     private final GraphRequestBatch requests;
