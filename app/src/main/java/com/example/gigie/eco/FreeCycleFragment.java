@@ -387,8 +387,13 @@ public class FreeCycleFragment extends Fragment {
 
                                 freecycle.saveInBackground();
 
+
                                 ShowFreecycle showFreecycle = new ShowFreecycle();
                                 FragmentManager fm = getFragmentManager();
+
+                                try{ Thread.sleep(1000); }catch(InterruptedException el){ }
+
+
                                 FragmentTransaction transaction = fm.beginTransaction();
                                 Bundle args = new Bundle();
                                 args.putInt("sID", tmp[0]);
