@@ -1,5 +1,7 @@
 package com.example.gigie.eco;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -17,7 +19,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -43,6 +47,12 @@ public class ShowFreecycle extends Fragment {
     TextView category;
     ImageView img_category;
 
+    ImageView imageTop;
+    ImageView imageLeft;
+    ImageView imageCenter;
+    ImageView imageRight;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.showfreecycle, null, true);
@@ -64,6 +74,11 @@ public class ShowFreecycle extends Fragment {
         img_category = (ImageView) v.findViewById(R.id.itemcat);
         category = (TextView) v.findViewById(R.id.text_cat);
 
+        imageTop = (ImageView) v.findViewById(R.id.imageButton4);
+        imageLeft = (ImageView) v.findViewById(R.id.imageButton3);
+        imageCenter = (ImageView) v.findViewById(R.id.imageButton);
+        imageRight = (ImageView) v.findViewById(R.id.imageButton2);
+
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Freecycle");
         query2.whereEqualTo("shopID",sID);
         query2.findInBackground(new FindCallback<ParseObject>() {
@@ -74,6 +89,9 @@ public class ShowFreecycle extends Fragment {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.
                         startDate.setText(dealsObject.get("startDate").toString());
                         endDate.setText(dealsObject.get("endDate").toString());
+
+
+
 
                         String cat = dealsObject.get("category").toString();
 
@@ -106,12 +124,74 @@ public class ShowFreecycle extends Fragment {
                             img_category.setImageResource(R.mipmap.freeother);
                             category.setText(cat);
                         }
+
+
+
+                        ParseObject parseObject = new ParseObject("Freecycle");
+                        ParseFile fileObject1 = (ParseFile) dealsObject.getParseFile("ImageFileTop");
+                        fileObject1.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if (e == null) {
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    imageTop.setImageBitmap(bmp);
+                                } else {
+
+                                }
+                            }
+                        });
+
+
+                        ParseFile fileObject2 = (ParseFile) dealsObject.getParseFile("ImageFileLeft");
+                        fileObject2.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if(e == null){
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(data,0,data.length);
+                                    imageLeft.setImageBitmap(bmp);
+                                }
+                                else{
+
+                                }
+                            }
+                        });
+
+                        ParseFile fileObject3 = (ParseFile) dealsObject.getParseFile("ImageFileCenter");
+                        fileObject3.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if(e == null){
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(data,0,data.length);
+                                    imageCenter.setImageBitmap(bmp);
+                                }
+                                else{
+
+                                }
+                            }
+                        });
+
+
+                        ParseFile fileObject4 = (ParseFile) dealsObject.getParseFile("ImageFileRight");
+                        fileObject4.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if(e == null){
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(data,0,data.length);
+                                    imageRight.setImageBitmap(bmp);
+                                }
+                                else{
+
+                                }
+                            }
+                        });
                     }
+
 
                 } else {
                     Log.i("score", "Error: " + e.getMessage());
                 }
             }
+
         });
 
 

@@ -129,7 +129,7 @@ public class ProfileFragment extends Fragment {
 //                            transaction.addToBackStack(null);
 //                            transaction.commit();
 
-                            if(type[position].equals("recycle")) {
+                            if (type[position].equals("recycle")) {
                                 ShowRecycleShop showRecycleShop = new ShowRecycleShop();
                                 FragmentManager fm = getFragmentManager();
                                 FragmentTransaction transaction = fm.beginTransaction();
@@ -142,7 +142,7 @@ public class ProfileFragment extends Fragment {
 
                             }
 
-                            if(type[position].equals("foodscrape")){
+                            if (type[position].equals("foodscrape")) {
                                 ShowFoodscrape showFoodscrape = new ShowFoodscrape();
                                 FragmentManager fm = getFragmentManager();
                                 FragmentTransaction transaction = fm.beginTransaction();
@@ -155,7 +155,7 @@ public class ProfileFragment extends Fragment {
 
                             }
 
-                            if(type[position].equals("landfill")){
+                            if (type[position].equals("landfill")) {
                                 ShowLandfill showLandfill = new ShowLandfill();
                                 FragmentManager fm = getFragmentManager();
                                 FragmentTransaction transaction = fm.beginTransaction();
@@ -167,7 +167,7 @@ public class ProfileFragment extends Fragment {
                                 transaction.commit();
 
                             }
-                            if(type[position].equals("freecycle")){
+                            if (type[position].equals("freecycle")) {
                                 ShowFreecycle showFreecycle = new ShowFreecycle();
                                 FragmentManager fm = getFragmentManager();
                                 FragmentTransaction transaction = fm.beginTransaction();
@@ -188,13 +188,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        shop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
-                listView.setAdapter(adapter);
-            }
-        });
+
 
 
 //        >>>SELECT by condition
@@ -259,6 +253,15 @@ public class ProfileFragment extends Fragment {
 //            }
 //
 //        });
+
+
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomListViewAdapter adapter = new CustomListViewAdapter(getActivity(), shopname, type);
+                listView.setAdapter(adapter);
+            }
+        });
 
         request.setOnClickListener(new View.OnClickListener() {
             @Override
