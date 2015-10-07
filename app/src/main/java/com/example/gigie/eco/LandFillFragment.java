@@ -46,6 +46,11 @@ public class LandFillFragment extends Fragment {
     ImageButton imageCenter;
     ImageButton imageRight;
 
+    private Uri tmpUri;
+    private Uri tmpUri1;
+    private Uri tmpUri2;
+    private Uri tmpUri3;
+
 
     EditText shopName;
     EditText description;
@@ -321,10 +326,13 @@ public class LandFillFragment extends Fragment {
 //                                }
 
 
+
+
                                 landfill.saveInBackground();
 
                                 ShowLandfill showLandfill = new ShowLandfill();
                                 FragmentManager fm = getFragmentManager();
+                                try{ Thread.sleep(10000); }catch(InterruptedException el){ }
                                 FragmentTransaction transaction = fm.beginTransaction();
                                 Bundle args = new Bundle();
                                 args.putInt("sID", tmp[0]);
@@ -359,6 +367,7 @@ public class LandFillFragment extends Fragment {
             else
                 Log.e("dataNull", "not null 1");
             Uri uri = data.getData();
+            tmpUri = uri;
             try {
 //                bitmap1 = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), uri);
 //

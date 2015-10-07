@@ -12,6 +12,7 @@ import com.parse.ParseUser;
  */
 public class EcoSpot extends Application {
 
+
     static final String TAG = "MyApp";
     @Override
 

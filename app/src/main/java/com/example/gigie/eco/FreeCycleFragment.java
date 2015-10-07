@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
@@ -76,15 +75,15 @@ public class FreeCycleFragment extends Fragment {
     public static final int REQUEST_GALLERY3 = 4;
 
 
-    Bitmap bitmap1;
-    Bitmap bitmap2;
-    Bitmap bitmap3;
-    Bitmap bitmap4;
-
-    ImageView image1;
-    ImageView image2;
-    ImageView image3;
-    ImageView Image4;
+//    Bitmap bitmap1;
+//    Bitmap bitmap2;
+//    Bitmap bitmap3;
+//    Bitmap bitmap4;
+//
+//    ImageView image1;
+//    ImageView image2;
+//    ImageView image3;
+//    ImageView Image4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -390,10 +389,7 @@ public class FreeCycleFragment extends Fragment {
 
                                 ShowFreecycle showFreecycle = new ShowFreecycle();
                                 FragmentManager fm = getFragmentManager();
-
-                                try{ Thread.sleep(1000); }catch(InterruptedException el){ }
-
-
+                                try{ Thread.sleep(10000); }catch(InterruptedException el){ }
                                 FragmentTransaction transaction = fm.beginTransaction();
                                 Bundle args = new Bundle();
                                 args.putInt("sID", tmp[0]);
