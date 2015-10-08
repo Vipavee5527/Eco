@@ -1,11 +1,14 @@
 package com.example.gigie.eco;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -16,7 +19,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -46,6 +51,11 @@ public class ShowFoodscrape extends Fragment {
     TextView minFoodScrapeOther;
     TextView priceFoodScrapeOther;
 
+    ImageView imageTop;
+    ImageView imageLeft;
+    ImageView imageCenter;
+    ImageView imageRight;
+
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         final View v = inflater.inflate(R.layout.showfoodscrape, null, true);
@@ -70,6 +80,12 @@ public class ShowFoodscrape extends Fragment {
         minFoodScrapeOther = (TextView) v.findViewById(R.id.show_minFoodScrapOther);
         priceFoodScrapeOther = (TextView) v.findViewById(R.id.show_priceFoodScrapOther);
 
+        imageTop = (ImageView) v.findViewById(R.id.imageButton4);
+        imageLeft = (ImageView) v.findViewById(R.id.imageButton3);
+        imageCenter = (ImageView) v.findViewById(R.id.imageButton);
+        imageRight = (ImageView) v.findViewById(R.id.imageButton2);
+
+
 
         ParseQuery<ParseObject> query2 = ParseQuery.getQuery("FoodScrape");
         query2.whereEqualTo("shopID", sID);
@@ -79,16 +95,72 @@ public class ShowFoodscrape extends Fragment {
                     Log.i(">>>>>>>>>>>>>>>>>>>>>", "Retrieved " + scoreList.size() + " scores"); // Get List size
                     for (ParseObject dealsObject : scoreList) {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.
-                        minCoffee.setText(dealsObject.get("minCoffee").toString() + " THB./kg.");
+                        minCoffee.setText(dealsObject.get("minCoffee").toString() + " Kg./day");
                         priceCoffee.setText(dealsObject.get("priceCoffee").toString() + " THB./kg.");
-                        minFoodScrape.setText(dealsObject.get("minFoodScrape").toString() + " THB./kg.");
+                        minFoodScrape.setText(dealsObject.get("minFoodScrape").toString() + " Kg./day");
                         priceFoodScrape.setText(dealsObject.get("priceFoodScrape").toString() + " THB./kg.");
-                        minCookingOil.setText(dealsObject.get("minCookingOil").toString());
+                        minCookingOil.setText(dealsObject.get("minCookingOil").toString()+ " Kg./day");
                         priceCookingOil.setText(dealsObject.get("priceCookingOil").toString() + " THB./kg.");
-                        minFoodScrapeOther.setText(dealsObject.get("minFoodScrapeOther").toString() + " THB./kg.");
+                        minFoodScrapeOther.setText(dealsObject.get("minFoodScrapeOther").toString() + " Kg./day");
                         priceFoodScrapeOther.setText(dealsObject.get("priceFoodScrapeOther").toString() + " THB./kg.");
 
+                        ParseObject parseObject = new ParseObject("FoodScrape");
+                        ParseFile fileObject1 = (ParseFile) dealsObject.getParseFile("ImageFileTop");
+                        fileObject1.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if (e == null) {
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    imageTop.setImageBitmap(bmp);
+                                } else {
+
+                                }
+                            }
+                        });
+
+
+                        ParseFile fileObject2 = (ParseFile) dealsObject.getParseFile("ImageFileLeft");
+                        fileObject2.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if (e == null) {
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    imageLeft.setImageBitmap(bmp);
+                                } else {
+
+                                }
+                            }
+                        });
+
+                        ParseFile fileObject3 = (ParseFile) dealsObject.getParseFile("ImageFileCenter");
+                        fileObject3.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if (e == null) {
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    imageCenter.setImageBitmap(bmp);
+                                } else {
+
+                                }
+                            }
+                        });
+
+
+                        ParseFile fileObject4 = (ParseFile) dealsObject.getParseFile("ImageFileRight");
+                        fileObject4.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if (e == null) {
+                                    Bitmap bmp = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                    imageRight.setImageBitmap(bmp);
+                                } else {
+
+                                }
+                            }
+                        });
+
                     }
+
 
                 } else {
                     Log.i("score", "Error: " + e.getMessage());

@@ -26,9 +26,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -325,6 +327,73 @@ public class LandFillFragment extends Fragment {
 //                                    landfill.put("otherSpecify", "-");
 //                                }
 
+                                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                                // Compress image to lower quality scale 1 - 100
+                                try {
+                                    decodeUri(tmpUri).compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                }
+                                byte[] image = stream.toByteArray();
+
+                                ParseFile file = new ParseFile("TEST.png", image);
+                                // Upload the image into Parse Cloud
+                                file.saveInBackground();
+
+                                landfill.put("ImageFileTop", file);
+
+
+                                ByteArrayOutputStream stream1 = new ByteArrayOutputStream();
+                                // Compress image to lower quality scale 1 - 100
+                                try {
+                                    decodeUri(tmpUri1).compress(Bitmap.CompressFormat.PNG, 100, stream1);
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                }
+                                byte[] image1 = stream1.toByteArray();
+
+                                ParseFile file1 = new ParseFile("TEST1.png", image1);
+                                // Upload the image into Parse Cloud
+                                file1.saveInBackground();
+
+                                // Create a column named "ImageFile" and insert the image
+                                landfill.put("ImageFileLeft", file1);
+
+
+                                ByteArrayOutputStream stream2 = new ByteArrayOutputStream();
+                                // Compress image to lower quality scale 1 - 100
+                                try {
+                                    decodeUri(tmpUri2).compress(Bitmap.CompressFormat.PNG, 100, stream2);
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                }
+                                byte[] image2 = stream2.toByteArray();
+
+                                ParseFile file2 = new ParseFile("TEST2.png", image2);
+                                // Upload the image into Parse Cloud
+                                file2.saveInBackground();
+
+                                // Create a column named "ImageFile" and insert the image
+                                landfill.put("ImageFileCenter", file2);
+
+
+
+                                ByteArrayOutputStream stream3 = new ByteArrayOutputStream();
+                                // Compress image to lower quality scale 1 - 100
+                                try {
+                                    decodeUri(tmpUri3).compress(Bitmap.CompressFormat.PNG, 100, stream3);
+                                } catch (FileNotFoundException e1) {
+                                    e1.printStackTrace();
+                                }
+                                byte[] image3 = stream3.toByteArray();
+
+                                ParseFile file3 = new ParseFile("TEST3.png", image3);
+                                // Upload the image into Parse Cloud
+                                file3.saveInBackground();
+
+                                // Create a column named "ImageFile" and insert the image
+                                landfill.put("ImageFileRight", file3);
+
 
 
 
@@ -372,7 +441,6 @@ public class LandFillFragment extends Fragment {
 //                bitmap1 = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), uri);
 //
 //                imageTop.setImageBitmap(bitmap1);
-
                 imageTop.setImageBitmap(decodeUri2(uri));
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -385,6 +453,7 @@ public class LandFillFragment extends Fragment {
             else
                 Log.e("dataNull", "not null 2");
             Uri uri = data.getData();
+            tmpUri1 = uri;
             try {
                 //bitmap2 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
                 //imageLeft.setImageBitmap(bitmap2);
@@ -400,6 +469,8 @@ public class LandFillFragment extends Fragment {
             else
                 Log.e("dataNull", "not null 3");
             Uri uri = data.getData();
+            tmpUri2 = uri;
+
             try {
                 //bitmap3 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
                 //imageCenter.setImageBitmap(bitmap3);
@@ -415,6 +486,7 @@ public class LandFillFragment extends Fragment {
             else
                 Log.e("dataNull", "not null 4");
             Uri uri = data.getData();
+            tmpUri3 = uri;
             try {
                 //bitmap4 = Media.getBitmap(this.getActivity().getContentResolver(), uri);
 
