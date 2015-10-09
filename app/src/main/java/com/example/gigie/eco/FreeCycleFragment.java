@@ -76,17 +76,6 @@ public class FreeCycleFragment extends Fragment {
     public static final int REQUEST_GALLERY2 = 3;
     public static final int REQUEST_GALLERY3 = 4;
 
-
-//    Bitmap bitmap1;
-//    Bitmap bitmap2;
-//    Bitmap bitmap3;
-//    Bitmap bitmap4;
-//
-//    ImageView image1;
-//    ImageView image2;
-//    ImageView image3;
-//    ImageView Image4;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.create_freecycle, null, false);

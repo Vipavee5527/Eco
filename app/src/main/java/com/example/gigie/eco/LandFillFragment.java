@@ -61,6 +61,7 @@ public class LandFillFragment extends Fragment {
     EditText address;
     EditText telephone;
     EditText landmark;
+    EditText areaSize;
     EditText startDate;
     EditText endDate;
     CheckBox concrete;
@@ -99,6 +100,7 @@ public class LandFillFragment extends Fragment {
         landmark = (EditText) v.findViewById(R.id.nearbylandmark);
         startDate = (EditText) v.findViewById(R.id.startDate);
         endDate = (EditText) v.findViewById(R.id.finishDate);
+        areaSize = (EditText) v.findViewById(R.id.AreaDropSize);
 
         concrete = (CheckBox) v.findViewById(R.id.concrete);
         sand = (CheckBox) v.findViewById(R.id.sand);
@@ -273,6 +275,7 @@ public class LandFillFragment extends Fragment {
                                     shop.put("landmark", "-");
                                 }
 
+
                                 shop.put("lat", marker[0].getPosition().latitude);
                                 shop.put("lng", marker[0].getPosition().longitude);
                                 shop.saveInBackground();
@@ -290,6 +293,13 @@ public class LandFillFragment extends Fragment {
                                     landfill.put("endDate", endDate.getText().toString());
                                 } else {
                                     landfill.put("endDate", "-");
+                                }
+
+                                str = areaSize.getText().toString();
+                                if (!str.equals("")) {
+                                    landfill.put("areaSize", areaSize.getText().toString());
+                                } else {
+                                    landfill.put("areaSize", "-");
                                 }
 
 
@@ -322,6 +332,8 @@ public class LandFillFragment extends Fragment {
                                     landfill.put("other", false);
                                     landfill.put("otherSpecify", "-");
                                 }
+
+
 
 //                                str = otherSpecify.getText().toString();
 //                                if (!str.equals("")) {

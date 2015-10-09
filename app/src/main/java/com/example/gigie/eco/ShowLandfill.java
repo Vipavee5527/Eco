@@ -49,6 +49,7 @@ public class ShowLandfill extends Fragment {
     CheckBox other;
     TextView otherSpecify;
     TextView show_category;
+    TextView areaSize;
 
     ImageView imageTop;
     ImageView imageLeft;
@@ -73,6 +74,7 @@ public class ShowLandfill extends Fragment {
         startDate = (TextView) v.findViewById(R.id.startDate);
         endDate = (TextView) v.findViewById(R.id.finishDate);
         show_category = (TextView) v.findViewById(R.id.show_category);
+        areaSize = (TextView)v.findViewById(R.id.AreaDropSizeShown);
 //        CheckBox concrete;
 //        CheckBox sand;
 //        CheckBox stone;
@@ -96,6 +98,7 @@ public class ShowLandfill extends Fragment {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.
                         startDate.setText(dealsObject.get("startDate").toString());
                         endDate.setText(dealsObject.get("endDate").toString());
+                        areaSize.setText(dealsObject.get("areaSize").toString() + " square metres");
 
                         String show = "";
 
