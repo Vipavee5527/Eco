@@ -3,6 +3,7 @@ package com.example.gigie.eco;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -80,7 +82,8 @@ public class FoodScrapFragment extends Fragment {
 
         mScrollView = (ScrollView) v.findViewById(R.id.scrollview_foodscrape);
         mMap = ((SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map_pick)).getMap();
-        mMap.setMyLocationEnabled(true);
+       // mMap.setMyLocationEnabled(true);
+        setUpMap();
 
         imageTop = (ImageButton) v.findViewById(R.id.imageButton4);
         imageLeft = (ImageButton) v.findViewById(R.id.imageButton3);
@@ -176,9 +179,8 @@ public class FoodScrapFragment extends Fragment {
         });
 
         final Marker[] marker = new Marker[1];
-
-        double lat = 0.1;
-        double lng = 0.1;
+        double lat = 13.652493;
+        double lng = 100.493719;
         mMap.clear();
         marker[0] = mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_foodscrape)));
 
@@ -565,5 +567,21 @@ public class FoodScrapFragment extends Fragment {
         return BitmapFactory.decodeStream(
                 getActivity().getContentResolver().openInputStream(uri), null, o2);
     }
+
+    private void setUpMap() {
+        mMap.setMyLocationEnabled(true);
+        mMap.setOnMyLocationChangeListener(myLocationChangeListener);
+    }
+
+    private GoogleMap.OnMyLocationChangeListener myLocationChangeListener = new GoogleMap.OnMyLocationChangeListener() {
+        @Override
+        public void onMyLocationChange(Location location) {
+            LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
+            //mMap.addMarker(new MarkerOptions().position(loc).icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle)));
+            if (mMap != null) {
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
+            }
+        }
+    };
 
 }

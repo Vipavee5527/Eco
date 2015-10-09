@@ -228,9 +228,8 @@ public class RecycleShopFragment extends Fragment {
 //
 //        }
 ////
-        double lat = 13.652648;
-        double lng = 100.493634;
-
+        double lat = 13.652493;
+        double lng = 100.493719;
 
         mMap.clear();
         marker[0] = mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.fromResource(R.mipmap.marker_recycle)));
